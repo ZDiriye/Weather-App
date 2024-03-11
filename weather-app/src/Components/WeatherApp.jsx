@@ -10,7 +10,7 @@ import waves from "./Assets/Waves.png";
 import mapImage from "./Assets/mapImage.png";
 
 const WeatherApp = () => {
-  const locationName = "London"; // Repla ce with dynamic location data
+  const locationName = "London"; // Replace with dynamic location data
   // Dummy hourly forecast data
   const hourlyForecast = [
     { time: 'Now', icon: clearNight, temp: '10°' },
