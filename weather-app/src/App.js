@@ -1,7 +1,7 @@
 // App.js
 import React from 'react';
 import WeatherApp from './Components/WeatherApp';
-import MarineWeather from './Components/marineWeather';
+// import MarineWeather from './Components/marineWeather';
 
 
 function App() {
