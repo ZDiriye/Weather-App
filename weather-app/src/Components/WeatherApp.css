@@ -40,7 +40,7 @@ img, video, canvas, iframe {
   }
   
   .location-heading {
-    padding-top: 4em;
+    padding-top: 2.5rem;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding-bottom: 1em;
@@ -52,8 +52,7 @@ img, video, canvas, iframe {
     background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
     border-radius: 15px; /* Rounded corners */
     padding: 10px;
-    margin: 10px 0; /* Add margin above and below the forecast */
-    margin-bottom: 18em;
+    margin-bottom: 2rem;
   }
   
   .hourly-forecast-item {
@@ -136,14 +135,15 @@ img, video, canvas, iframe {
     justify-content: center; /* Center the wind details */
     align-items: center;
     gap: 10px; /* Add space between the icon and the text */
+
   }
   
   .map-container {
     /* Styles for the map container */
     text-align: center; /* Center the map image */
     padding: 10px; /* Add some padding around the map */
-    margin-top: 2em; /* Adjust the margin to fit your design */
-    margin-bottom: 3em;
+    margin-top: 1rem; /* Adjust the margin to fit your design */
+    margin-bottom: 1rem;
     align-items: center;
   }
   
@@ -159,7 +159,7 @@ img, video, canvas, iframe {
     justify-content: center;
     align-items: center;
     gap: 20px; /* Adjust the space between wind speed and gusts */
-    padding-top: 5em;
+    padding-top: 2rem;
 
   }
   
@@ -169,6 +169,7 @@ img, video, canvas, iframe {
     background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
     border-radius: 20px; /* Rounded corners */
     padding: 5px 10px; /* Padding around the text and icon */
+    margin-bottom: 1rem;
   
   }
   

@@ -1,5 +1,5 @@
 //test comment 3
-
+import {Link} from 'react-router-dom';
 import React from 'react';
 import "../Components/WeatherApp.css";
 import clearNight from "./Assets/Clear-night.png";
@@ -70,15 +70,12 @@ const WeatherApp = () => {
     
 
       <div className="navigation-bar">
-        <a href="#Wind" className="nav-item">
-          <img src={wind} alt="Wind" className="nav-icon" />
-        </a>
-        <a href="#Locations" className="nav-item">
-          <img src={location} alt="Locations" className="nav-icon" />
-        </a>
-        <a href="#Waves" className="nav-item">
-          <img src={waves} alt="Waves" className="nav-icon" />
-        </a>
+        <Link to="/wind"><img src={wind} alt="Wind" className="nav-icon" /></Link>
+
+        <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
+
+        <Link to="/waves"><img src={waves} alt="Waves" className="nav-icon" /></Link>
+
       </div>
     </div>
   );
