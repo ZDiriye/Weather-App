@@ -1,16 +1,7 @@
-
-// fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=54.544587&longitude=10.227487&hourly=wave_height,swell_wave_height&daily=wave_height_max,swell_wave_height_max&timezone=auto`, {
-  
-// }).then((response) => response.json()).then((jsonData) => {
-//     console.log(jsonData)
-  
-// });
-
-
-
+//Imports requried for the page to work
+//Includes axios, react, css files and images used on the page
 import axios from 'axios';
-import React from 'react';
-
+import React, {useEffect, useState} from 'react';
 import "./marineWeather.css";
 import wind from "./Assets/Wind.png";
 import location from "./Assets/location.png";
@@ -22,115 +13,175 @@ import swell from "./Assets/Swell.png";
 
 const MarineWeather = () => {
 
-    const fetchData = async () => {
+  //Used to store the data from the API call to use outside of fetchData
+  const [marineWeatherData, setMarineWeatherData] = useState(null);
+  //State for the CSS class
+  const [cssClass, setCSSClass] = useState('weather-containerNight')
 
-        const response = {};
+  //Gets the marine weather data from the API
+  //Used the example code given on QM+
+  const fetchData = async () => {
+
+    let apiURL = `https://marine-api.open-meteo.com/v1/marine?latitude=51.5378&longitude=0.7143&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`;
+    try{
+      const response = await axios.get(apiURL);
+      setMarineWeatherData(response.data)
+      console.log(response.data); 
+    }
+
+    catch (error) { 
+      console.error(error);
+    }
+
+  };
+
+  //Manages the calling of fetchData, to ensure it doesn't call too many times
+  //Also switches the CSS class based on the current time
+  useEffect(() => {
+    fetchData(); 
+
+    let currentDate = new Date();
+    let currentHour = currentDate.getHours();
+
+    console.log(currentHour);
+
+    if(currentHour >= 7 && currentHour <= 20){
+      setCSSClass('weather-containerDay')
+    }
+    else{
+      setCSSClass('weather-containerNight')
+    }
+
+  }, []);
+
+  //Changes the image displayed for the waves based on the height
+  //Used the beaufort scale for reference
+  function chooseWaveImg(height){
+    if(height != "Loading"){
+      //High Wave and above
+      if(height >= 6){
+        return bigWave;
+      }
+      //Moderate and rough
+      else if(height < 6 && height > 2.5){
+        return seaWavesThree;
+      }
+      //Anything else
+      else{
+        return seaWavesTwo;
+      }
+      //Need more wave images for calm waves
+    }
+    else{
+      return "Loading";
+    }
+
+  }
     
-        try {
-            const response = await axios.get( `https://marine-api.open-meteo.com/v1/marine?latitude=54.544587&longitude=10.227487&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`
-            );
-            console.log(response.data); //You can see all the weather data in console log
-            // console.log(response.data["daily"]["wave_height_max"][0], "m")
-            // apiResults = (response.data["daily"]["wave_height_max"][0], "m")
-        } 
-        catch (error) { 
-            console.error(error);
-        }
-    
-        return response
-    };
 
-    fetchData();
+  const locationName = "Southend-On-Sea"; // Replace with dynamic location data
 
-    const locationName = "London"; // Replace with dynamic location data
-  // Dummy hourly forecast data
+  // Hourly forecast data from the marine API
+  // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const hourlyForecast = [
-    { time: 'Now', icon: bigWave, height: '1.76 m' },
-    { time: '22:00', icon: bigWave, height: '1.70 m' },
-    { time: '23:00', icon: seaWavesThree, height: '1.50 m' },
-    { time: '00:00', icon: seaWavesTwo, height: '1.20 m' },
-    { time: '01:00', icon: seaWavesTwo, height: '1.15 m' },
+    { time: "Now", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[0]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[0]:"Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16) : "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[1]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[1]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[2]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[2]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[3].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[3]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[3]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[4].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[4]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[4]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[5].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[5]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[5]: "Loading"},
     // Add more forecast data as needed
   ];
 
+  // Hourly swell forecast data from the marine API
+  // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const swellForecast = [
-    { time: 'Now', height: '0.1 m' },
-    { time: '22:00', height: '0.2 m' },
-    { time: '23:00', height: '0.1 m' },
-    { time: '00:00', height: '0.15 m' },
-    { time: '01:00', height: '0.15 m' },
+    { time: 'Now', height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[0]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[1].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[1]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[2]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[3].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[3]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[4].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[4]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[5].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[5]: "Loading"},
     // Add more forecast data as needed
   ];
 
+  // Current weather data for the location
+  // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const currentWeather = {
-    height: '1.76 m',
-    direction: '87°',
+    height: marineWeatherData ? marineWeatherData.current.wave_height : "Loading",
+    direction: marineWeatherData ? marineWeatherData.current.wave_direction : "Loading",
   };
 
+  // Current weather data for the location
+  // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const currentSwell = {
-    swellHeight: '1.76 m',
+    swellHeight: marineWeatherData ? marineWeatherData.current.swell_wave_height : "Loading",
   };
 
+  // HTML page returned with the weather data inside
   return (
-    <div className="weather-container">
-      <div className="location-heading">
-        <h1>{locationName}</h1>
-      </div>
-      <div className="current-weather-container">
-        <div className='wave-and-height'>
-            <img src={bigWave} alt="Waves icon" className="wave-heading-icon" />
-            <div className="height">{currentWeather.height}</div>
-        </div>
-        <div className="direction-div">
-          <span className="direction">Direction: {currentWeather.direction}</span>
-        </div>
-      </div>
-      <div className="hourly-forecast-container">
-        {hourlyForecast.map((hour, index) => (
-          <div key={index} className="hourly-forecast-item">
-            <div className="hourly-time">{hour.time}</div>
-            <img src={hour.icon} alt="Wave icon" className="wave-icon" />
-            
-            <div className="hourly-hight">{hour.height}</div>
+    <div className={cssClass}>
+        <header className="location-heading">
+          <h1>{locationName}</h1>
+        </header>
+
+        <section className="current-weather-container">
+          <div className='wave-and-height'>
+              <img src={bigWave} alt="Waves icon" className="wave-heading-icon" />
+              
+                <div className="height">{currentWeather.height} m</div>
           </div>
-        ))}
-      </div>
-
-      <div className="swell-container">
-        <div className='swell-heading'>
-            <img src={swell} alt="Swell icon" className="swell-icon" />
-            <h2 className='swell-title'>Swell</h2>
-        </div>
-        
-        <div className='swellHeight'>{currentSwell.swellHeight}</div>
-
-        <div className="hourly-forecast-container">
-        {swellForecast.map((hour, index) => (
-          <div key={index} className="hourly-forecast-item">
-            <div className="hourly-time">{hour.time}</div>
-            
-            <div className="hourly-swell">{hour.height}</div>
+          <div className="direction-div">
+            <span className="direction">Direction: {currentWeather.direction} °</span>
           </div>
-        ))}
-      </div>
+        </section>
 
-      </div>
-    
+        <section className="hourly-forecast-container">
+          {hourlyForecast.map((hour, index) => (
+            <div key={index} className="hourly-forecast-item">
+              <div className="hourly-time">{hour.time}</div>
+              <img src={hour.icon} alt="Wave icon" className="wave-icon" />
+              
+              <div className="hourly-hight">{hour.height} m</div>
+            </div>
+          ))}
+        </section>
 
-      <div className="navigation-bar">
-        <a href="#Wind" className="nav-item">
-          <img src={wind} alt="Wind" className="nav-icon" />
-        </a>
-        <a href="#Locations" className="nav-item">
-          <img src={location} alt="Locations" className="nav-icon" />
-        </a>
-        <a href="#Waves" className="nav-item">
-          <img src={waves} alt="Waves" className="nav-icon" />
-        </a>
-      </div>
+        <section className="swell-container">
+          <div className='swell-heading'>
+              <img src={swell} alt="Swell icon" className="swell-icon" />
+              <h2 className='swell-title'>Swell</h2>
+          </div>
+          
+          <div className='swellHeight'>{currentSwell.swellHeight} m</div>
+
+          <div className="hourly-forecast-container">
+            {swellForecast.map((hour, index) => (
+              <div key={index} className="hourly-forecast-item">
+                <div className="hourly-time">{hour.time}</div>
+                
+                <div className="hourly-swell">{hour.height} m</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      
+
+        <nav className="navigation-bar">
+          <a href="#Wind" className="nav-item">
+            <img src={wind} alt="Wind" className="nav-icon" />
+          </a>
+          <a href="#Locations" className="nav-item">
+            <img src={location} alt="Locations" className="nav-icon" />
+          </a>
+          <a href="#Waves" className="nav-item">
+            <img src={waves} alt="Waves" className="nav-icon" />
+          </a>
+        </nav>
     </div>
   );
 
 };
+
 
 export default MarineWeather;
