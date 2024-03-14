@@ -2,13 +2,16 @@
 //Includes axios, react, css files and images used on the page
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+
 import "./marineWeather.css";
 import wind from "./Assets/Wind.png";
 import location from "./Assets/location.png";
 import waves from "./Assets/Waves.png";
 import bigWave from "./Assets/wave.png";
-import seaWavesThree from "./Assets/Sea Waves.png"
-import seaWavesTwo from "./Assets/Sea Waves less.png"
+import seaWavesThree from "./Assets/Sea Waves.png";
+import seaWavesTwo from "./Assets/Sea Waves less.png";
+import seaWavesOne from "./Assets/Sea Waves single.png";
 import swell from "./Assets/Swell.png";
 
 const MarineWeather = () => {
@@ -45,30 +48,34 @@ const MarineWeather = () => {
 
     console.log(currentHour);
 
-    if(currentHour >= 7 && currentHour <= 20){
-      setCSSClass('weather-containerDay')
+    if(currentHour >= 7 && currentHour <= 19){
+      setCSSClass('marineweather-containerDay')
     }
     else{
-      setCSSClass('weather-containerNight')
+      setCSSClass('marineweather-containerNight')
     }
 
   }, []);
 
   //Changes the image displayed for the waves based on the height
-  //Used the beaufort scale for reference
+  //Used the Douglas scale for reference
   function chooseWaveImg(height){
-    if(height != "Loading"){
+    if(height !== "Loading"){
       //High Wave and above
       if(height >= 6){
         return bigWave;
       }
-      //Moderate and rough
+      //rough
       else if(height < 6 && height > 2.5){
         return seaWavesThree;
       }
-      //Anything else
-      else{
+      //moderate
+      else if(height < 2.5 && height > 1.25){
         return seaWavesTwo;
+      }
+      //slight and calm
+      else{
+        return seaWavesOne;
       }
       //Need more wave images for calm waves
     }
@@ -121,11 +128,11 @@ const MarineWeather = () => {
   // HTML page returned with the weather data inside
   return (
     <div className={cssClass}>
-        <header className="location-heading">
+        <header className="marinelocation-heading">
           <h1>{locationName}</h1>
         </header>
 
-        <section className="current-weather-container">
+        <section className="marinecurrent-weather-container">
           <div className='wave-and-height'>
               <img src={bigWave} alt="Waves icon" className="wave-heading-icon" />
               
@@ -136,13 +143,13 @@ const MarineWeather = () => {
           </div>
         </section>
 
-        <section className="hourly-forecast-container">
+        <section className="marinehourly-forecast-container">
           {hourlyForecast.map((hour, index) => (
-            <div key={index} className="hourly-forecast-item">
-              <div className="hourly-time">{hour.time}</div>
+            <div key={index} className="marinehourly-forecast-item">
+              <div className="marinehourly-time">{hour.time}</div>
               <img src={hour.icon} alt="Wave icon" className="wave-icon" />
               
-              <div className="hourly-hight">{hour.height} m</div>
+              <div className="marinehourly-hight">{hour.height} m</div>
             </div>
           ))}
         </section>
@@ -155,28 +162,28 @@ const MarineWeather = () => {
           
           <div className='swellHeight'>{currentSwell.swellHeight} m</div>
 
-          <div className="hourly-forecast-container">
+          <div className="marinehourly-forecast-container">
             {swellForecast.map((hour, index) => (
-              <div key={index} className="hourly-forecast-item">
-                <div className="hourly-time">{hour.time}</div>
+              <div key={index} className="marinehourly-forecast-item">
+                <div className="marinehourly-time">{hour.time}</div>
                 
-                <div className="hourly-swell">{hour.height} m</div>
+                <div className="marinehourly-swell">{hour.height} m</div>
               </div>
             ))}
           </div>
         </section>
       
 
-        <nav className="navigation-bar">
-          <a href="#Wind" className="nav-item">
-            <img src={wind} alt="Wind" className="nav-icon" />
-          </a>
-          <a href="#Locations" className="nav-item">
-            <img src={location} alt="Locations" className="nav-icon" />
-          </a>
-          <a href="#Waves" className="nav-item">
-            <img src={waves} alt="Waves" className="nav-icon" />
-          </a>
+        <nav className="marinenavigation-bar">
+
+            <Link to="/wind"><img src={wind} alt="Wind" className="nav-icon" /></Link>
+
+
+            <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
+
+
+            <Link to="/waves"><img src={waves} alt="Waves" className="nav-icon" /></Link>
+
         </nav>
     </div>
   );
