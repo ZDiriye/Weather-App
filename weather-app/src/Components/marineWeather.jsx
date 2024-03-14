@@ -85,7 +85,7 @@ const MarineWeather = () => {
   // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const hourlyForecast = [
     { time: "Now", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[0]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[0]:"Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16) : "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[1]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[1]: "Loading"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[1].slice(11, 16) : "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[1]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[1]: "Loading"},
     { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[2]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[2]: "Loading"},
     { time: marineWeatherData ? marineWeatherData.hourly.time[3].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[3]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[3]: "Loading"},
     { time: marineWeatherData ? marineWeatherData.hourly.time[4].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[4]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[4]: "Loading"},
