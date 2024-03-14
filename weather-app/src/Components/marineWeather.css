@@ -197,21 +197,21 @@ img, video, canvas, iframe {
   
   
 
-  .weather-containerDay{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background-image: url('./day\ gradient.png'); /* background image URL */
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 1.25rem;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+.weather-containerDay{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url('./day\ gradient.png'); /* background image URL */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
   .swell-container{
     display: flex;
@@ -223,7 +223,7 @@ img, video, canvas, iframe {
       margin: 10px 0; /* Add margin above and below the forecast */
       margin-bottom: 1rem;
   }
-  
+
   .location-heading {
     padding-top: 2.5em;
     text-align: center;
@@ -239,7 +239,7 @@ img, video, canvas, iframe {
     margin-top: 0.8rem; /* Add margin above and below the forecast */
     margin-bottom: 0.8rem;
   }
-  
+
   .hourly-forecast-item {
     flex: 0 0 auto;
     margin-right: 20px;
@@ -253,12 +253,12 @@ img, video, canvas, iframe {
     justify-content: center; /* Center items vertically */
 
   }
-  
+
   .hourly-time {
     /* Styles for the time label */
     font-size: 0.8em; /* Smaller font size for the time */
   }
-  
+
   .hourly-height {
     /* Styles for the temperature label */
     font-size: 1.2em; /* Larger font size for the temperature */
@@ -297,7 +297,7 @@ img, video, canvas, iframe {
     margin-top: 2rem;
     font-size: 1.75rem;
   }
-  
+
   .swellHeight{
     font-size: 1.5rem;
     align-self: center;
@@ -314,13 +314,13 @@ img, video, canvas, iframe {
     padding-bottom: 0%;
 
   }
-  
+
   .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .nav-icon {
     width: 25px; /* or any size you want */
     height: 25px; /* or any size you want */
@@ -332,25 +332,24 @@ img, video, canvas, iframe {
     /* Styles for the current weather container */
     text-align: center; /* Center the content */
   }
-  
+
   .height {
     /* Styles for the current temperature */
     font-size: 3em; /* Large font size for visibility */
     font-weight: bold;
     margin-left: 0.5rem;
   }
-  
+
   .direction-div {
     /* Styles for the high and low temperatures */
     font-size: 1.5em;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .weather-icon {
     /* Adjust the size of the icons if needed */
     width: 30px;
     height: 30px;
     margin-right: 5px; /* Space between icon and text */
   }
-  
