@@ -1,6 +1,5 @@
 //Imports requried for the page to work
 //Includes axios, react, css files and images used on the page
-import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
@@ -22,26 +21,26 @@ const MarineWeather = () => {
   const [cssClass, setCSSClass] = useState('weather-containerNight')
 
   //Gets the marine weather data from the API
-  //Used the example code given on QM+
   const fetchData = async () => {
 
-    let apiURL = `https://marine-api.open-meteo.com/v1/marine?latitude=51.5378&longitude=0.7143&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`;
-    try{
-      const response = await axios.get(apiURL);
-      setMarineWeatherData(response.data)
-      console.log(response.data); 
-    }
+    //Fetches the latitude and longitude from the api based on the textual location
+    //This is then used in a new api call to get the marine weather 
 
-    catch (error) { 
-      console.error(error);
-    }
+    fetch(`https://geocoding-api.open-meteo.com/v1/search?name=Southend-On-Sea&count=1&language=en&format=json`)
+      .then(apiResponse => apiResponse.json())
+      .then(data => 
+            fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`)
+            .then(response => response.json())
+            .then(data2 => setMarineWeatherData(data2))
+            .catch(error => console.error(error)))
 
+      .catch(error => console.error(error));
   };
+
 
   //Manages the calling of fetchData, to ensure it doesn't call too many times
   //Also switches the CSS class based on the current time
   useEffect(() => {
-    fetchData(); 
 
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
@@ -54,6 +53,9 @@ const MarineWeather = () => {
     else{
       setCSSClass('marineweather-containerNight')
     }
+    
+
+    fetchData(); 
 
   }, []);
 
@@ -77,7 +79,6 @@ const MarineWeather = () => {
       else{
         return seaWavesOne;
       }
-      //Need more wave images for calm waves
     }
     else{
       return "Loading";
@@ -162,7 +163,7 @@ const MarineWeather = () => {
           
           <div className='swellHeight'>{currentSwell.swellHeight} m</div>
 
-          <div className="marinehourly-forecast-container">
+          <div className="marine-swell-hourly-forecast-container">
             {swellForecast.map((hour, index) => (
               <div key={index} className="marinehourly-forecast-item">
                 <div className="marinehourly-time">{hour.time}</div>
