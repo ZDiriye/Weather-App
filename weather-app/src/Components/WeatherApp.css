@@ -46,13 +46,12 @@ video, canvas, iframe {
     background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
     border-radius: 15px; /* Rounded corners */
     padding: 10px;
-    margin-bottom: 2rem;
   }
   
   .hourly-forecast-item {
     flex: 0 0 auto;
     margin-right: 20px;
-    padding: 10px 20px; /* Padding inside each forecast item */
+    padding: 40px 10px; /* Padding inside each forecast item */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
     border-radius: 10px; /* Rounded corners for each item */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
@@ -170,6 +169,38 @@ video, canvas, iframe {
   .wind-speed span, .wind-directions span {
     white-space: nowrap;
   }
+
+
+  .searchBar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .searchBar form {
+    display: flex;
+    width: 100%;
+    max-width: 500px; /* Adjust the max-width as needed */
+  }
+
+  .searchBar input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px 0 0 20px; /* Rounded left corners */
+    font-size: 16px;
+    color: #333; /* Font color - adjust if necessary */
+  }
+
+  .searchBar button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #1E90FF; /* Button color */
+    color: white; /* Button text color */
+    border-radius: 0 20px 20px 0; /* Rounded right corners */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 }
 
 @media (min-width: 769px) {
@@ -191,7 +222,7 @@ video, canvas, iframe {
   .location-heading {
     padding-top: 2.5rem;
     text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
     padding-bottom: 1em;
   }
 
@@ -200,18 +231,16 @@ video, canvas, iframe {
     overflow-x: auto;
     background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
     border-radius: 15px; /* Rounded corners */
-    padding: 10px;
-    margin-top: 0.8rem; /* Add margin above and below the forecast */
-    margin-bottom: 1.5rem;
     margin-left: 15rem;
     margin-right: 15rem;
     justify-content: space-evenly;
+    padding: 1em;
   }
   
   .hourly-forecast-item {
     flex: 0 0 auto;
     margin-right: 20px;
-    padding: 10px 20px; /* Padding inside each forecast item */
+    padding: 40px 20px; /* Padding inside each forecast item */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
     border-radius: 10px; /* Rounded corners for each item */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
@@ -331,6 +360,37 @@ video, canvas, iframe {
   .wind-speed span, .wind-directions span {
     white-space: nowrap;
   }
+
+  .searchBar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .searchBar form {
+    display: flex;
+    width: 100%;
+    max-width: 500px; /* Adjust the max-width as needed */
+  }
+
+  .searchBar input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px 0 0 20px; /* Rounded left corners */
+    font-size: 16px;
+    color: #333; /* Font color - adjust if necessary */
+  }
+
+  .searchBar button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #1E90FF; /* Button color */
+  color: white; /* Button text color */
+  border-radius: 0 20px 20px 0; /* Rounded right corners */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
   
 }
 

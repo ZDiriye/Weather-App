@@ -11,7 +11,8 @@ import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
-  const city = 'Portland';
+  const [city, setCity] = useState('London'); // Initialize city as a state variable
+  const [searchInput, setSearchInput] = useState(''); // State for handling search input
   const apiKey = '2cc31d01c769fda3dbadec4c1b5f8185';
 
   useEffect(() => {
@@ -33,14 +34,31 @@ const WeatherApp = () => {
     };
 
     fetchData();
-  }, [apiKey, city]);
+  }, [apiKey, city]); // Depend on city to refetch data when it changes
+
+  const handleSearch = (e) => {
+    e.preventDefault(); // Prevent the default form submit action
+    setCity(searchInput); // Update the city state with the user's input
+  };
 
   const mapOptions = { gestureHandling: 'greedy', disableDefaultUI: true };
+  
 
   return (
     <div className="weather-container">
+      <div className='searchBar'>
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Search for a city..."
+        />
+        <button type="submit">Search</button>
+      </form>
+      </div>
       {weatherData && (
-        <div>
+        <>
           <div className="location-heading">
             <h1>{weatherData.name}</h1>
           </div>
@@ -57,7 +75,7 @@ const WeatherApp = () => {
               </div>
               <div className="wind-directions">
                 <img src={compass} alt="Wind Directions Icon" className="weather-icon" />
-                <span>{Math.round(weatherData.wind.deg)} ° - Wind Direction</span>
+                <span>{Math.round(weatherData.wind.deg)}° - Wind Direction</span>
               </div>
             </div>
           </div>
@@ -71,15 +89,15 @@ const WeatherApp = () => {
             ))}
           </div>
           <div className="map-container">
-            <APIProvider apiKey={"AIzaSyAQYXfm7jX465oOttf8Jag3l0-neDoBnw4"}>
-              <div style={{ height: "200px", width: "100%"}}>
+            <APIProvider apiKey="AIzaSyAQYXfm7jX465oOttf8Jag3l0-neDoBnw4">
+              <div style={{ height: "200px", width: "100%" }}>
                 <Map options={mapOptions} zoom={9} center={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }}>
-                  <Marker position={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }}></Marker>
+                  <Marker position={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }} />
                 </Map>
               </div>
             </APIProvider>
           </div>
-        </div>
+        </>
       )}
       <div className="navigation-bar">
         <Link to="/wind"><img src={wind} alt="Wind" className="nav-icon" /></Link>
