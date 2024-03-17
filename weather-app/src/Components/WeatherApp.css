@@ -10,7 +10,7 @@ html, body {
   overflow-x: hidden;
 }
 
-img, video, canvas, iframe {
+video, canvas, iframe {
   max-width: 100%; /* Ensure media elements are not wider than their containers */
   height: auto; /* Maintain aspect ratio */
 }
@@ -146,24 +146,16 @@ img, video, canvas, iframe {
     margin-bottom: 1rem;
     align-items: center;
   }
-  
-  .wind-map {
-    width: 100%; /* Make the map image full width */
-    max-height: 150px; /* Maximum height for the map */
-    object-fit: cover; /* Ensure the image covers the area without stretching */
-    border-radius: 15px; /* Rounded corners for the map */
-  }
 
   .wind-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Adjust the space between wind speed and gusts */
+    gap: 20px; /* Adjust the space between wind speed and directions */
     padding-top: 2rem;
-
   }
   
-  .wind-speed, .wind-gusts {
+  .wind-speed, .wind-directions {
     display: flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
@@ -181,7 +173,7 @@ img, video, canvas, iframe {
   }
   
   /* Add this if you want to make sure the wind information does not break into two lines */
-  .wind-speed span, .wind-gusts span {
+  .wind-speed span, .wind-directions span {
     white-space: nowrap;
   }
   
