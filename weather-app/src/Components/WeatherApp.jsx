@@ -11,7 +11,7 @@ import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
-  const [city, setCity] = useState('London'); // Initialize city as a state variable
+  const [city, setCity] = useState('Cape Town'); // Initialize city as a state variable
   const [searchInput, setSearchInput] = useState(''); // State for handling search input
   const apiKey = '2cc31d01c769fda3dbadec4c1b5f8185';
 
@@ -90,7 +90,7 @@ const WeatherApp = () => {
           </div>
           <div className="map-container">
             <APIProvider apiKey="AIzaSyAQYXfm7jX465oOttf8Jag3l0-neDoBnw4">
-              <div style={{ height: "200px", width: "100%" }}>
+              <div style={{ height: "10rem", width: "100%" }}>
                 <Map options={mapOptions} zoom={9} center={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }}>
                   <Marker position={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }} />
                 </Map>
@@ -100,11 +100,11 @@ const WeatherApp = () => {
         </>
       )}
       <div className="navigation-bar">
-        <Link to="/wind"><img src={wind} alt="Wind" className="nav-icon" /></Link>
+        <Link to="/wind" state={weatherData ? weatherData.name:"Cape Town"}><img src={wind} alt="Wind" className="nav-icon" /></Link>
 
         <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
 
-        <Link to="/waves"><img src={waves} alt="Waves" className="nav-icon" /></Link>
+        <Link to="/waves" state={weatherData ? weatherData.name:"Cape Town"}><img src={waves} alt="Waves" className="nav-icon" /></Link>
 
       </div>
     </div>

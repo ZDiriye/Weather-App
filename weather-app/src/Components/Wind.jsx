@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 import "./Wind.css";
 import wind from "./Assets/Wind.png";
@@ -12,19 +12,32 @@ const Wind = () => {
   const [windData, setWindData] = useState(null);
   const [cssClass, setCSSClass] = useState('weather-containerNight')
 
+  const {state} = useLocation();
+  const city = state; 
+
   const fetchData = async () => {
 
     // hardcoded southend-on-sea latitude and longitude
-    let apiURL = `https://api.open-meteo.com/v1/forecast?latitude=51.5378&longitude=0.7143&current_weather=true&hourly=windspeed_10m`;
-    try{
-      const response = await axios.get(apiURL);
-      setWindData(response.data)
-      console.log(response.data); 
-    }
+    // let apiURL = `https://api.open-meteo.com/v1/forecast?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current_weather=true&hourly=windspeed_10m`;
+    // try{
+    //   const response = await axios.get(apiURL);
+    //   setWindData(response.data)
+    //   console.log(response.data); 
+    // }
 
-    catch (error) { 
-      console.error(error);
-    }
+    // catch (error) { 
+    //   console.error(error);
+    // }
+
+    fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`)
+      .then(apiResponse => apiResponse.json())
+      .then(data => 
+            fetch(`https://api.open-meteo.com/v1/forecast?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current_weather=true&hourly=windspeed_10m`)
+            .then(response => response.json())
+            .then(data2 => setWindData(data2))
+            .catch(error => console.error(error)))
+
+      .catch(error => console.error(error));
 
   };
 
@@ -48,7 +61,7 @@ const Wind = () => {
 
 
   // same as marineWeather.jsx - Should this be a global variable?
-  const locationName = "Southend-On-Sea";
+  const locationName = city;
 
 
   const currentHour = new Date().getHours();
@@ -88,13 +101,13 @@ const Wind = () => {
 
         <nav className="marinenavigation-bar">
 
-            <Link to="/wind"><img src={wind} alt="Wind" className="nav-icon" /></Link>
+            <Link to="/wind" state={city}><img src={wind} alt="Wind" className="nav-icon" /></Link>
 
 
             <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
 
 
-            <Link to="/waves"><img src={waves} alt="Waves" className="nav-icon" /></Link>
+            <Link to="/waves" state={city}><img src={waves} alt="Waves" className="nav-icon" /></Link>
 
         </nav>
     </div>

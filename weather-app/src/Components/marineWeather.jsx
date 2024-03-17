@@ -1,7 +1,7 @@
 //Imports requried for the page to work
 //Includes axios, react, css files and images used on the page
 import React, {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 import "./marineWeather.css";
 import wind from "./Assets/Wind.png";
@@ -18,7 +18,12 @@ const MarineWeather = () => {
   //Used to store the data from the API call to use outside of fetchData
   const [marineWeatherData, setMarineWeatherData] = useState(null);
   //State for the CSS class
-  const [cssClass, setCSSClass] = useState('weather-containerNight')
+  const [cssClass, setCSSClass] = useState('weather-containerNight');
+
+  const {state} = useLocation();
+  const city = state; 
+
+  console.log(city)
 
   //Gets the marine weather data from the API
   const fetchData = async () => {
@@ -26,7 +31,7 @@ const MarineWeather = () => {
     //Fetches the latitude and longitude from the api based on the textual location
     //This is then used in a new api call to get the marine weather 
 
-    fetch(`https://geocoding-api.open-meteo.com/v1/search?name=Southend-On-Sea&count=1&language=en&format=json`)
+    fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`)
       .then(apiResponse => apiResponse.json())
       .then(data => 
             fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`)
@@ -87,7 +92,7 @@ const MarineWeather = () => {
   }
     
 
-  const locationName = "Southend-On-Sea"; // Replace with dynamic location data
+  const locationName = city; // Replace with dynamic location data
 
   // Hourly forecast data from the marine API
   // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
@@ -147,9 +152,8 @@ const MarineWeather = () => {
         <section className="marinehourly-forecast-container">
           {hourlyForecast.map((hour, index) => (
             <div key={index} className="marinehourly-forecast-item">
-              <div className="marinehourly-time">{hour.time}</div>
               <img src={hour.icon} alt="Wave icon" className="wave-icon" />
-              
+              <div className="marinehourly-time">{hour.time}</div>
               <div className="marinehourly-hight">{hour.height} m</div>
             </div>
           ))}
@@ -177,13 +181,13 @@ const MarineWeather = () => {
 
         <nav className="marinenavigation-bar">
 
-            <Link to="/wind"><img src={wind} alt="Wind" className="nav-icon" /></Link>
+            <Link to="/wind" state={city}><img src={wind} alt="Wind" className="nav-icon" /></Link>
 
 
             <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
 
 
-            <Link to="/waves"><img src={waves} alt="Waves" className="nav-icon" /></Link>
+            <Link to="/waves" state={city}><img src={waves} alt="Waves" className="nav-icon" /></Link>
 
         </nav>
     </div>
