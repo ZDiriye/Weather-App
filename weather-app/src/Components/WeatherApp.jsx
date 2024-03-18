@@ -14,6 +14,8 @@ const WeatherApp = () => {
   const [city, setCity] = useState('Cape Town'); // Initialize city as a state variable
   const [searchInput, setSearchInput] = useState(''); // State for handling search input
   const apiKey = '2cc31d01c769fda3dbadec4c1b5f8185';
+  const [CSSclass, setCSSclass] = useState('weather-container-day');
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +35,18 @@ const WeatherApp = () => {
       }
     };
 
+    let currentDate = new Date();
+    let currentHour = currentDate.getHours();
+
+    console.log(currentHour);
+
+    if(currentHour >= 7 && currentHour <= 19){
+      setCSSclass('weather-container-day');
+    }
+    else{
+      setCSSclass('marineweather-container-night');
+    }
+
     fetchData();
   }, [apiKey, city]); // Depend on city to refetch data when it changes
 
@@ -45,67 +59,69 @@ const WeatherApp = () => {
   
 
   return (
-    <div className="weather-container">
-      <div className='searchBar'>
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          placeholder="Search for a coastal city or location..."
-        />
-        <button type="submit">Search</button>
-      </form>
-      </div>
-      {weatherData && (
-        <>
-          <div className="location-heading">
-            <h1>{weatherData.name}</h1>
-          </div>
-          <div className="current-weather-container">
-            <div className="temperature">{Math.round(weatherData.main.temp)}°</div>
-            <div className="high-low">
-              <span className="high">H: {Math.round(weatherData.main.temp_max)}°</span>
-              <span className="low">L: {Math.round(weatherData.main.temp_min)}°</span>
+    <div className = {CSSclass}>
+      <div className="weather-container">
+        <div className='searchBar'>
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Search for a coastal city or location..."
+          />
+          <button type="submit">Search</button>
+        </form>
+        </div>
+        {weatherData && (
+          <>
+            <div className="location-heading">
+              <h1>{weatherData.name}</h1>
             </div>
-            <div className="wind-container">
-              <div className="wind-speed">
-                <img src={wind} alt="Wind Speed Icon" className="weather-icon" />
-                <span>{Math.round(weatherData.wind.speed)} MPH - Wind</span>
+            <div className="current-weather-container">
+              <div className="temperature">{Math.round(weatherData.main.temp)}°</div>
+              <div className="high-low">
+                <span className="high">H: {Math.round(weatherData.main.temp_max)}°</span>
+                <span className="low">L: {Math.round(weatherData.main.temp_min)}°</span>
               </div>
-              <div className="wind-directions">
-                <img src={compass} alt="Wind Directions Icon" className="weather-icon" />
-                <span>{Math.round(weatherData.wind.deg)}° - Wind Direction</span>
+              <div className="wind-container">
+                <div className="wind-speed">
+                  <img src={wind} alt="Wind Speed Icon" className="weather-icon" />
+                  <span>{Math.round(weatherData.wind.speed)} MPH - Wind</span>
+                </div>
+                <div className="wind-directions">
+                  <img src={compass} alt="Wind Directions Icon" className="weather-icon" />
+                  <span>{Math.round(weatherData.wind.deg)}° - Wind Direction</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="hourly-forecast-container">
-            {hourlyForecast.map((hour, index) => (
-              <div key={index} className="hourly-forecast-item">
-                <img src={hour.icon} alt="Weather icon" className="weather-icon" />
-                <div className="hourly-time">{hour.time}</div>
-                <div className="hourly-temp">{Math.round(hour.temp)}°</div>
-              </div>
-            ))}
-          </div>
-          <div className="map-container">
-            <APIProvider apiKey="AIzaSyAQYXfm7jX465oOttf8Jag3l0-neDoBnw4">
-              <div style={{ height: "10rem", width: "100%" }}>
-                <Map options={mapOptions} zoom={9} center={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }}>
-                  <Marker position={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }} />
-                </Map>
-              </div>
-            </APIProvider>
-          </div>
-        </>
-      )}
-      <div className="navigation-bar">
-        <Link to="/wind" state={weatherData ? weatherData.name:"Cape Town"}><img src={wind} alt="Wind" className="nav-icon" /></Link>
+            <div className="hourly-forecast-container">
+              {hourlyForecast.map((hour, index) => (
+                <div key={index} className="hourly-forecast-item">
+                  <img src={hour.icon} alt="Weather icon" className="weather-icon" />
+                  <div className="hourly-time">{hour.time}</div>
+                  <div className="hourly-temp">{Math.round(hour.temp)}°</div>
+                </div>
+              ))}
+            </div>
+            <div className="map-container">
+              <APIProvider apiKey="AIzaSyAQYXfm7jX465oOttf8Jag3l0-neDoBnw4">
+                <div style={{ height: "10rem", width: "100%" }}>
+                  <Map options={mapOptions} zoom={9} center={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }}>
+                    <Marker position={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }} />
+                  </Map>
+                </div>
+              </APIProvider>
+            </div>
+          </>
+        )}
+        <div className="navigation-bar">
+          <Link to="/wind" state={weatherData ? weatherData.name:"Cape Town"}><img src={wind} alt="Wind" className="nav-icon" /></Link>
 
-        <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
+          <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
 
-        <Link to="/waves" state={weatherData ? weatherData.name:"Cape Town"}><img src={waves} alt="Waves" className="nav-icon" /></Link>
+          <Link to="/waves" state={weatherData ? weatherData.name:"Cape Town"}><img src={waves} alt="Waves" className="nav-icon" /></Link>
 
+        </div>
       </div>
     </div>
   );

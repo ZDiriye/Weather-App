@@ -3,6 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
+import axios from 'axios';
 import "./marineWeather.css";
 import wind from "./Assets/Wind.png";
 import location from "./Assets/location.png";
@@ -19,7 +20,7 @@ const MarineWeather = () => {
   //Used to store the data from the API call to use outside of fetchData
   const [marineWeatherData, setMarineWeatherData] = useState(null);
   //State for the CSS class
-  const [cssClass, setCSSClass] = useState('weather-containerNight');
+  const [cssClass, setCSSClass] = useState('weather-containerDay');
 
   const {state} = useLocation();
   const city = state; 
@@ -32,15 +33,25 @@ const MarineWeather = () => {
     //Fetches the latitude and longitude from the api based on the textual location
     //This is then used in a new api call to get the marine weather 
 
-    fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`)
-      .then(apiResponse => apiResponse.json())
-      .then(data => 
-            fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`)
-            .then(response => response.json())
-            .then(data2 => setMarineWeatherData(data2))
-            .catch((error) => {console.log(error)}))
 
-      .catch(error => console.error(error));
+    try{
+      const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`);
+      const response2 = await axios.get(`https://marine-api.open-meteo.com/v1/marine?latitude=${response.data.results[0].latitude}&longitude=${response.data.results[0].longitude}&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`);
+      setMarineWeatherData(response2.data);
+    }
+    catch(error){
+      console.error(error);
+    }
+
+    // fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`)
+    //   .then(apiResponse => apiResponse.json())
+    //   .then(data => 
+    //         fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`)
+    //         .then(response => response.json())
+    //         .then(data2 => setMarineWeatherData(data2))
+    //         .catch((error) => {console.log(error)}))
+
+    //   .catch(error => console.error(error));
   };
 
 
@@ -68,7 +79,7 @@ const MarineWeather = () => {
   //Changes the image displayed for the waves based on the height
   //Used the Douglas scale for reference
   function chooseWaveImg(height){
-    if(height !== "Loading"){
+    if(height !== "Not a valid location"){
       //High Wave and above
       if(height >= 6){
         return bigWave;
@@ -87,7 +98,7 @@ const MarineWeather = () => {
       }
     }
     else{
-      return "Loading";
+      return "Not a valid location";
     }
 
   }
@@ -96,40 +107,40 @@ const MarineWeather = () => {
   const locationName = city; // Replace with dynamic location data
 
   // Hourly forecast data from the marine API
-  // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
+  // Has a holding value of Not a valid location until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const hourlyForecast = [
-    { time: "Now", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[0]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[0]:"Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[1].slice(11, 16) : "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[1]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[1]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[2]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[2]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[3].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[3]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[3]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[4].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[4]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[4]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[5].slice(11, 16): "Loading", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[5]:"Loading"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[5]: "Loading"},
+    { time: "Now", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[0]:"Not a valid location"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[0]:"Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[1].slice(11, 16) : "Not a valid location", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[1]:"Not a valid location"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[1]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16): "Not a valid location", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[2]:"Not a valid location"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[2]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[3].slice(11, 16): "Not a valid location", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[3]:"Not a valid location"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[3]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[4].slice(11, 16): "Not a valid location", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[4]:"Not a valid location"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[4]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[5].slice(11, 16): "Not a valid location", icon: chooseWaveImg(marineWeatherData ? marineWeatherData.hourly.wave_height[5]:"Not a valid location"), height: marineWeatherData ? marineWeatherData.hourly.wave_height[5]: "Not a valid location"},
     // Add more forecast data as needed
   ];
 
   // Hourly swell forecast data from the marine API
-  // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
+  // Has a holding value of Not a valid location until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const swellForecast = [
-    { time: 'Now', height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[0]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[1].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[1]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[2]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[3].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[3]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[4].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[4]: "Loading"},
-    { time: marineWeatherData ? marineWeatherData.hourly.time[5].slice(11, 16): "Loading", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[5]: "Loading"},
+    { time: 'Now', height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[0]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[1].slice(11, 16): "Not a valid location", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[1]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[2].slice(11, 16): "Not a valid location", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[2]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[3].slice(11, 16): "Not a valid location", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[3]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[4].slice(11, 16): "Not a valid location", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[4]: "Not a valid location"},
+    { time: marineWeatherData ? marineWeatherData.hourly.time[5].slice(11, 16): "Not a valid location", height: marineWeatherData ? marineWeatherData.hourly.swell_wave_height[5]: "Not a valid location"},
     // Add more forecast data as needed
   ];
 
   // Current weather data for the location
-  // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
+  // Has a holding value of Not a valid location until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const currentWeather = {
-    height: marineWeatherData ? marineWeatherData.current.wave_height : "Loading",
-    direction: marineWeatherData ? marineWeatherData.current.wave_direction : "Loading",
+    height: marineWeatherData ? marineWeatherData.current.wave_height : "Not a valid location",
+    direction: marineWeatherData ? marineWeatherData.current.wave_direction : "Not a valid location",
   };
 
   // Current weather data for the location
-  // Has a holding value of Loading until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
+  // Has a holding value of Not a valid location until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
   const currentSwell = {
-    swellHeight: marineWeatherData ? marineWeatherData.current.swell_wave_height : "Loading",
+    swellHeight: marineWeatherData ? marineWeatherData.current.swell_wave_height : "Not a valid location",
   };
 
   // HTML page returned with the weather data inside
