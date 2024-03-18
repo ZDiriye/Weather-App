@@ -106,7 +106,7 @@ const WeatherApp = () => {
             </div>
             <div className="map-container">
               <APIProvider apiKey="AIzaSyAQYXfm7jX465oOttf8Jag3l0-neDoBnw4">
-                <div style={{ height: "10rem", width: "100%" }}>
+                <div style={{ height: "10rem", width: "100%"}}>
                   <Map options={mapOptions} zoom={9} center={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }}>
                     <Marker position={{ lat: weatherData.coord.lat, lng: weatherData.coord.lon }} />
                   </Map>

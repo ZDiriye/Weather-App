@@ -56,15 +56,32 @@ video, canvas, iframe {
     padding-bottom: 1em;
   }
 
+  /* Semi-transparent white for the background */
+  /* Rounded corners */
   .hourly-forecast-container {
+    /* display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 15px; 
+    padding: 1rem;
+    margin-bottom: 1rem;
+    justify-content: space-evenly; */
+
+
     display: flex;
     overflow-x: auto;
     background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
     border-radius: 15px; /* Rounded corners */
-    padding: 1rem;
+    padding: 10px;
+    margin-top: 0.8rem; /* Add margin above and below the forecast */
+    margin-bottom: 0.8rem;
+    justify-content: space-evenly;
+
   }
-  
+
   .hourly-forecast-item {
+    flex: 0 0 auto;
     margin-right: 20px;
     padding: 40px 10px; /* Padding inside each forecast item */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
@@ -74,7 +91,6 @@ video, canvas, iframe {
     flex-direction: column; /* Stack time and temperature vertically */
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
-
   }
   
   .hourly-time {
@@ -149,8 +165,6 @@ video, canvas, iframe {
   .map-container {
     /* Styles for the map container */
     text-align: center; /* Center the map image */
-    padding: 10px; /* Add some padding around the map */
-    margin-top: 1rem; /* Adjust the margin to fit your design */
     margin-bottom: 1rem;
     align-items: center;
   }
