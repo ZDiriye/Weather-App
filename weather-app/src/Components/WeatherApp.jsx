@@ -38,13 +38,14 @@ const WeatherApp = () => {
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
 
+
     console.log(currentHour);
 
     if(currentHour >= 7 && currentHour <= 19){
       setCSSclass('weather-container-day');
     }
     else{
-      setCSSclass('marineweather-container-night');
+      setCSSclass('weather-container-night');
     }
 
     fetchData();
@@ -59,8 +60,8 @@ const WeatherApp = () => {
   
 
   return (
-    <div className = {CSSclass}>
-      <div className="weather-container">
+
+      <div className={CSSclass}>
         <div className='searchBar'>
         <form onSubmit={handleSearch}>
           <input
@@ -123,7 +124,6 @@ const WeatherApp = () => {
 
         </div>
       </div>
-    </div>
   );
 };
 
