@@ -38,7 +38,6 @@ const WeatherApp = () => {
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
 
-
     console.log(currentHour);
 
     if(currentHour >= 7 && currentHour <= 19){
@@ -81,7 +80,7 @@ const WeatherApp = () => {
             <div className="current-weather-container">
               <div className="temperature">{Math.round(weatherData.main.temp)}°</div>
               <div className="high-low">
-                <span className="high">H: {Math.round(weatherData.main.temp_max)}°</span>
+                <span className="high">H: {Math.round(weatherData.main.temp_max)}° </span>
                 <span className="low">L: {Math.round(weatherData.main.temp_min)}°</span>
               </div>
               <div className="wind-container">
