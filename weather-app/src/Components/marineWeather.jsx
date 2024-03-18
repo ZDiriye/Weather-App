@@ -1,5 +1,5 @@
 //Imports requried for the page to work
-//Includes axios, react, css files and images used on the page
+//Includes axios, react, react-router-dom, css files and images used on the page
 import React, {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
@@ -19,9 +19,11 @@ const MarineWeather = () => {
 
   //Used to store the data from the API call to use outside of fetchData
   const [marineWeatherData, setMarineWeatherData] = useState(null);
-  //State for the CSS class
-  const [cssClass, setCSSClass] = useState('weather-containerDay');
 
+  //State for the CSS class
+  const [cssClass, setCSSClass] = useState('marineweather-containerDay');
+
+  //Get the state of another page through the links and set it to variable city
   const {state} = useLocation();
   const city = state; 
 
@@ -30,9 +32,8 @@ const MarineWeather = () => {
   //Gets the marine weather data from the API
   const fetchData = async () => {
 
-    //Fetches the latitude and longitude from the api based on the textual location
-    //This is then used in a new api call to get the marine weather 
-
+    //Fetches the latitude and longitude from the api based on the textual location using a geocoding api
+    //The latitude and longitude obtained is then used in a new api call to get the marine weather 
 
     try{
       const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`);
@@ -59,19 +60,22 @@ const MarineWeather = () => {
   //Also switches the CSS class based on the current time
   useEffect(() => {
 
+    //Gets the current date and time
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
 
     console.log(currentHour);
 
+    //Between the hours of 7am and 7pm, it will show the day background
     if(currentHour >= 7 && currentHour <= 19){
       setCSSClass('marineweather-containerDay')
     }
+    //If between 7pm and 7am show the night background
     else{
       setCSSClass('marineweather-containerNight')
     }
     
-
+    // Call to fetch api data
     fetchData(); 
 
   }, []);
@@ -97,14 +101,17 @@ const MarineWeather = () => {
         return seaWavesOne;
       }
     }
+    //returns blank image
     else{
-      return "Not a valid location";
+      return "";
     }
 
   }
     
+  // The location name is set with the name of the city/location searched by the user
+  const locationName = city; 
 
-  const locationName = city; // Replace with dynamic location data
+  //For all below - Not a valid location is also used as error handling for if the location is not available for the marine API e.g. if they searched London and there's no waves in London!
 
   // Hourly forecast data from the marine API
   // Has a holding value of Not a valid location until the API call is done, otherwise the marineWeatherData is null and the page doesn't render
@@ -144,6 +151,7 @@ const MarineWeather = () => {
   };
 
   // HTML page returned with the weather data inside
+  // Contains the links to the other pages in the nav element at the bottom
   return (
     <div className={cssClass}>
         <header className="marinelocation-heading">
@@ -166,7 +174,7 @@ const MarineWeather = () => {
             <div key={index} className="marinehourly-forecast-item">
               <img src={hour.icon} alt="Wave icon" className="wave-icon" />
               <div className="marinehourly-time">{hour.time}</div>
-              <div className="marinehourly-hight">{hour.height} m</div>
+              <div className="marinehourly-height">{hour.height} m</div>
             </div>
           ))}
         </section>
@@ -184,7 +192,7 @@ const MarineWeather = () => {
               <div key={index} className="marinehourly-forecast-item">
                 <div className="marinehourly-time">{hour.time}</div>
                 
-                <div className="marinehourly-swell">{hour.height} m</div>
+                <div className="marinehourly-height">{hour.height} m</div>
               </div>
             ))}
           </div>

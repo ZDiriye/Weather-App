@@ -10,7 +10,7 @@ import waves from "./Assets/Waves.png";
 const Wind = () => {
 
   const [windData, setWindData] = useState(null);
-  const [cssClass, setCSSClass] = useState('weather-containerNight')
+  const [cssClass, setCSSClass] = useState('windweather-containerNight')
 
   const {state} = useLocation();
   const city = state; 
@@ -51,16 +51,16 @@ const Wind = () => {
     console.log(currentHour);
 
     if(currentHour >= 7 && currentHour <= 19){
-      setCSSClass('marineweather-containerDay')
+      setCSSClass('windweather-containerDay')
     }
     else{
-      setCSSClass('marineweather-containerNight')
+      setCSSClass('windweather-containerNight')
     }
 
   }, []);
 
 
-  // same as marineWeather.jsx - Should this be a global variable?
+
   const locationName = city;
 
 
@@ -78,28 +78,28 @@ const Wind = () => {
 
   return (
     <div className={cssClass}>
-        <header className="marinelocation-heading">
+        <header className="windlocation-heading">
           <h1>{locationName}</h1>
         </header>
 
-        <section className="marinecurrent-weather-container">
-          <div className='wave-and-height'>
-              <img src={wind} alt="Wind icon" className="wave-heading-icon" />
+        <section className="windcurrent-weather-container">
+          <div className='windspeed'>
+              <img src={wind} alt="Wind icon" className="wind-speed-icon" />
               <div className="speed">{windData ? windData.current_weather.windspeed : "Loading"} m/s</div>
           </div>
         </section>
 
-        <section className="marinehourly-forecast-container">
+        <section className="windhourly-forecast-container">
           {hourlyForecast.map((hour, index) => (
-            <div key={index} className="marinehourly-forecast-item">
-              <div className="marinehourly-time">{hour.time}</div>
-              <img src={wind} alt="Wind icon" className="wave-icon" />
-              <div className="marinehourly-speed">{hour.speed} m/s</div>
+            <div key={index} className="windhourly-forecast-item">
+              <div className="windhourly-time">{hour.time}</div>
+              <img src={wind} alt="Wind icon" className="wind-icon" />
+              <div className="windhourly-speed">{hour.speed} m/s</div>
             </div>
           ))}
         </section>
 
-        <nav className="marinenavigation-bar">
+        <nav className="windnavigation-bar">
 
             <Link to="/wind" state={city}><img src={wind} alt="Wind" className="nav-icon" /></Link>
 
