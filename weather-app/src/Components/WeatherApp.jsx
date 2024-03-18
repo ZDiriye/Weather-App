@@ -52,7 +52,7 @@ const WeatherApp = () => {
           type="text"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          placeholder="Search for a city..."
+          placeholder="Search for a coastal city or location..."
         />
         <button type="submit">Search</button>
       </form>

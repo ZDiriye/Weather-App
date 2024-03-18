@@ -13,6 +13,7 @@ import seaWavesTwo from "./Assets/Sea Waves less.png";
 import seaWavesOne from "./Assets/Sea Waves single.png";
 import swell from "./Assets/Swell.png";
 
+
 const MarineWeather = () => {
 
   //Used to store the data from the API call to use outside of fetchData
@@ -37,7 +38,7 @@ const MarineWeather = () => {
             fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`)
             .then(response => response.json())
             .then(data2 => setMarineWeatherData(data2))
-            .catch(error => console.error(error)))
+            .catch((error) => {console.log(error)}))
 
       .catch(error => console.error(error));
   };
