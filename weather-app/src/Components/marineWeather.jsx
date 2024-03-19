@@ -64,6 +64,8 @@ const MarineWeather = () => {
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
 
+
+
     console.log(currentHour);
 
     //Between the hours of 7am and 7pm, it will show the day background

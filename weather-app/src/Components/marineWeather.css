@@ -211,6 +211,7 @@ img{
     
     
 
+    /* The following is the same but it uses a different background image - a blue gradient */
   .marineweather-containerDay{
 
     width: 100%;
@@ -381,7 +382,11 @@ img{
   }
 
 
+/* The following is the same but with a few changes and is used when the page is responsive for desktop */
+
 @media(min-width: 769px){
+
+  /* Uses a different background as the mobile day container, with a desktop resolution*/
 
   .marineweather-containerDay{
     width: 100%;
@@ -417,6 +422,8 @@ img{
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       margin-bottom: 0.5rem;
     }
+
+    /* Changes the left and right margin of the hourly forecast container */
 
     .marinehourly-forecast-container {
       display: flex;
