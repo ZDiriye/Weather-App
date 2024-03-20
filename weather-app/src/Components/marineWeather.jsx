@@ -43,16 +43,6 @@ const MarineWeather = () => {
     catch(error){
       console.error(error);
     }
-
-    // fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`)
-    //   .then(apiResponse => apiResponse.json())
-    //   .then(data => 
-    //         fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`)
-    //         .then(response => response.json())
-    //         .then(data2 => setMarineWeatherData(data2))
-    //         .catch((error) => {console.log(error)}))
-
-    //   .catch(error => console.error(error));
   };
 
 

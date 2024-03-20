@@ -17,28 +17,6 @@ const Wind = () => {
 
   const fetchData = async () => {
 
-    // hardcoded southend-on-sea latitude and longitude
-    // let apiURL = `https://api.open-meteo.com/v1/forecast?latitude=${data.results[0].latitude}&longitude=${data.results[0].longitude}&current_weather=true&hourly=windspeed_10m`;
-    // try{
-    //   const response = await axios.get(apiURL);
-    //   setWindData(response.data)
-    //   console.log(response.data); 
-    // }
-
-    // catch (error) { 
-    //   console.error(error);
-    // }
-
-    // fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`)
-    //   .then(apiResponse => apiResponse.json())
-    //   .then(data => 
-    //         fetch(`https://api.open-meteo.com/v1/forecast?latitude=${response.data.results[0].latitude}&longitude=${response.data.results[0].longitude}&current_weather=true&hourly=windspeed_10m`)
-    //         .then(response => response.json())
-    //         .then(data2 => setWindData(data2))
-    //         .catch(error => console.error(error)))
-
-    //   .catch(error => console.error(error));
-
     try{
       const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`);
       const response2 = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${response.data.results[0].latitude}&longitude=${response.data.results[0].longitude}&current_weather=true&hourly=windspeed_10m`);
