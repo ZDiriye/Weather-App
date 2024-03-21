@@ -1,28 +1,18 @@
-/* 
-
-############################
-############################
+/* marineWeather.css*/
 
 
-Add Comments - Lewis
-
-
-############################
-############################
-
-*/
-
-/* Reset margin, padding, height, overflow for elements */
+/* Sets full height of the html and body elemntes, removes margin and padding*/
 html, body {
-  height: 100%; /* Ensures that the html and body tags take up at least the full height of the viewport */
-  margin: 0; /* Removes default margin */
-  padding: 0; /* Removes default padding */
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
   overflow-x: hidden;
 }
 
+/* media elements are not wider than their containers */
 img{
-  max-width: 100%; /* img elements are not wider than their containers */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; 
+  height: auto; 
 }
 
 /* Media Queries for responsiveness */
@@ -40,7 +30,7 @@ img{
       width: 100%;
       height: 100%;
       position: relative;
-      background-image: url('../clear\ night\ copy.png'); /* background image URL */
+      background-image: url('../clear\ night\ copy.png'); /* background image URL*/
       background-size: cover;
       background-position: center;
       border-radius: 10px;
@@ -56,8 +46,8 @@ img{
       display: flex;
       flex-direction: column;
         overflow-x: auto;
-        background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-        border-radius: 15px; /* Rounded corners */
+        background: rgba(255, 255, 255, 0.1); 
+        border-radius: 15px; 
         padding: 10px;
         margin-bottom: 1rem;
     }
@@ -74,10 +64,10 @@ img{
     .marinehourly-forecast-container {
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
     }
 
@@ -85,10 +75,10 @@ img{
     .marine-swell-hourly-forecast-container {
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
     }
     
@@ -97,9 +87,9 @@ img{
       flex: 0 0 auto;
       margin-right: 20px;
       padding: 10px 20px; /* Padding inside each forecast item */
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
-      border-radius: 10px; /* Rounded corners for each item */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
       flex-direction: column; /* Stack time and temperature vertically */
       align-items: center; /* Center items horizontally */
@@ -129,9 +119,9 @@ img{
 
     /* Styling for the main wave icon */
     .wave-icon {
-      width: 30px;  /* Size to fit the design */
-      height: 30px; /* To maintain the aspect ratio */
-      margin-right: 0.1rem; /* Add some space between the icon and the text */
+      width: 30px;  
+      height: 30px; 
+      margin-right: 0.1rem; 
       margin-top: 0.3rem;
       margin-bottom: 0.3rem;
     }
@@ -169,7 +159,7 @@ img{
       align-items: center;
       bottom: 0;
       width: 100%;
-      background-color: #ffffff31; /* or any color you want */
+      background-color: #ffffff31; 
       border-radius: 15px ;
       padding-bottom: 0%;
 
@@ -233,8 +223,8 @@ img{
       display: flex;
       flex-direction: column;
         overflow-x: auto;
-        background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-        border-radius: 15px; /* Rounded corners */
+        background: rgba(255, 255, 255, 0.1); 
+        border-radius: 15px; 
         padding: 10px;
         margin-bottom: 1rem;
     }
@@ -249,20 +239,20 @@ img{
     .marinehourly-forecast-container {
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
     }
 
     .marine-swell-hourly-forecast-container {
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
     }
 
@@ -270,9 +260,9 @@ img{
       flex: 0 0 auto;
       margin-right: 20px;
       padding: 10px 20px; /* Padding inside each forecast item */
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
-      border-radius: 10px; /* Rounded corners for each item */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
       flex-direction: column; /* Stack time and temperature vertically */
       align-items: center; /* Center items horizontally */
@@ -300,9 +290,9 @@ img{
 
 
     .wave-icon {
-      width: 30px;  /* Size to fit the design */
-      height: 30px; /* To maintain the aspect ratio */
-      margin-right: 0.1rem; /* Add some space between the icon and the text */
+      width: 30px;  
+      height: 30px; 
+      margin-right: 0.1rem; 
       margin-top: 0.3rem;
       margin-bottom: 0.3rem;
     }
@@ -335,7 +325,7 @@ img{
       align-items: center;
       bottom: 0;
       width: 100%;
-      background-color: #ffffff31; /* or any color you want */
+      background-color: #ffffff31; 
       border-radius: 15px ;
       padding-bottom: 0%;
 
@@ -348,8 +338,8 @@ img{
     }
 
     .marinenav-icon {
-      width: 25px; /* or any size you want */
-      height: 25px; /* or any size you want */
+      width: 25px; 
+      height: 25px; 
       margin-bottom: 5px;
       margin-top: 5px;
     }
@@ -377,7 +367,7 @@ img{
       /* Adjust the size of the icons if needed */
       width: 30px;
       height: 30px;
-      margin-right: 5px; /* Space between icon and text */
+      margin-right: 5px; 
     }
   }
 
@@ -408,8 +398,8 @@ img{
       display: flex;
       flex-direction: column;
         overflow-x: auto;
-        background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-        border-radius: 15px; /* Rounded corners */
+        background: rgba(255, 255, 255, 0.1); 
+        border-radius: 15px; 
         padding: 10px;
         margin-bottom: 1rem;
       margin-left: 15rem;
@@ -428,10 +418,10 @@ img{
     .marinehourly-forecast-container {
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
       margin-left: 15rem;
       margin-right: 15rem;
@@ -442,9 +432,9 @@ img{
       flex: 0 0 auto;
       margin-right: 20px;
       padding: 10px 20px; /* Padding inside each forecast item */
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
-      border-radius: 10px; /* Rounded corners for each item */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
       flex-direction: column; /* Stack time and temperature vertically */
       align-items: center; /* Center items horizontally */
@@ -455,22 +445,22 @@ img{
     .marine-swell-hourly-forecast-container{
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
       justify-content: space-evenly;
     }
   
     .marinehourly-time {
       /* Styles for the time label */
-      font-size: 1rem; /* Smaller font size for the time */
+      font-size: 1rem; 
     }
     
     .marinehourly-height {
       /* Styles for the temperature label */
-      font-size: 1rem; /* Larger font size for the temperature */
+      font-size: 1rem; 
       font-weight: bold;
     }
 
@@ -483,9 +473,9 @@ img{
 
 
     .wave-icon {
-      width: 30px;  /* Size to fit the design */
-      height: 30px; /* To maintain the aspect ratio */
-      margin-right: 0.1rem; /* Add some space between the icon and the text */
+      width: 30px;  
+      height: 30px; 
+      margin-right: 0.1rem; 
       margin-top: 0.3rem;
       margin-bottom: 0.3rem;
     }
@@ -518,7 +508,7 @@ img{
       align-items: center;
       bottom: 0;
       width: 100%;
-      background-color: #ffffff31; /* or any color you want */
+      background-color: #ffffff31; 
       border-radius: 15px ;
       padding-bottom: 0%;
 
@@ -530,20 +520,20 @@ img{
     }
     
     .marinenav-icon {
-      width: 25px; /* or any size you want */
-      height: 25px; /* or any size you want */
+      width: 25px; 
+      height: 25px; 
       margin-bottom: 5px;
       margin-top: 5px;
     }
 
     .marinecurrent-weather-container {
       /* Styles for the current weather container */
-      text-align: center; /* Center the content */
+      text-align: center; 
     }
     
     .height {
       /* Styles for the current temperature */
-      font-size: 3em; /* Large font size for visibility */
+      font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
@@ -556,7 +546,6 @@ img{
     }
     
     .marineweather-icon {
-      /* Adjust the size of the icons if needed */
       width: 30px;
       height: 30px;
       margin-right: 5px; /* Space between icon and text */
@@ -583,8 +572,8 @@ img{
       display: flex;
       flex-direction: column;
         overflow-x: auto;
-        background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-        border-radius: 15px; /* Rounded corners */
+        background: rgba(255, 255, 255, 0.1); 
+        border-radius: 15px; 
         padding: 10px;
         margin-bottom: 1rem;
       margin-left: 15rem;
@@ -601,10 +590,10 @@ img{
     .marinehourly-forecast-container {
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
       margin-left: 15rem;
       margin-right: 15rem;
@@ -614,10 +603,10 @@ img{
     .marinehourly-forecast-item {
       flex: 0 0 auto;
       margin-right: 20px;
-      padding: 10px 20px; /* Padding inside each forecast item */
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
-      border-radius: 10px; /* Rounded corners for each item */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      padding: 10px 20px; 
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
       flex-direction: column; /* Stack time and temperature vertically */
       align-items: center; /* Center items horizontally */
@@ -628,22 +617,22 @@ img{
     .marine-swell-hourly-forecast-container{
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; /* margin above and below the forecast */
       margin-bottom: 1.5rem;
       justify-content: space-evenly;
     }
   
     .marinehourly-time {
       /* Styles for the time label */
-      font-size: 1rem; /* Smaller font size for the time */
+      font-size: 1rem; 
     }
     
     .marinehourly-height {
       /* Styles for the temperature label */
-      font-size: 1rem; /* Larger font size for the temperature */
+      font-size: 1rem;
       font-weight: bold;
     }
 
@@ -656,8 +645,8 @@ img{
 
 
     .wave-icon {
-      width: 30px;  /* Size to fit the design */
-      height: 30px; /* To maintain the aspect ratio */
+      width: 30px;  
+      height: 30px; 
       margin-right: 0.1rem; /* Add some space between the icon and the text */
       margin-top: 0.3rem;
       margin-bottom: 0.3rem;
@@ -691,7 +680,7 @@ img{
       align-items: center;
       bottom: 0;
       width: 100%;
-      background-color: #ffffff31; /* or any color you want */
+      background-color: #ffffff31; 
       border-radius: 15px ;
       padding-bottom: 0%;
 
@@ -703,8 +692,8 @@ img{
     }
     
     .marinenav-icon {
-      width: 25px; /* or any size you want */
-      height: 25px; /* or any size you want */
+      width: 25px; 
+      height: 25px; 
       margin-bottom: 5px;
       margin-top: 5px;
     }

@@ -122,7 +122,6 @@ const Wind = () => {
   { time: `${(currentHour + 3) % 24}:00`, speed: windData ? windData.hourly.windspeed_10m[(currentHour + 3) % 24] : "Loading" },
   { time: `${(currentHour + 4) % 24}:00`, speed: windData ? windData.hourly.windspeed_10m[(currentHour + 4) % 24] : "Loading" },
   { time: `${(currentHour + 5) % 24}:00`, speed: windData ? windData.hourly.windspeed_10m[(currentHour + 5) % 24] : "Loading" },
-  // Add more forecast data as needed
   ];
 
 

@@ -1,223 +1,31 @@
-/* WeatherComponent.css */
+/* WeatherApp.css */
+
 * {
-  box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+  box-sizing: border-box; 
 }
 
-/* 
-
-############################
-############################
-
-
-Add Comments - Lewis
-
-
-############################
-############################
-
-*/
-
+/* Sets full height of the html and body elemntes, removes margin and padding*/
 html, body {
-  height: 100%; /* Ensures that the html and body tags take up at least the full height of the viewport */
-  margin: 0; /* Removes default margin */
-  padding: 0; /* Removes default padding */
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
   overflow-x: hidden;
 }
 
+/*media elements are not wider than their containers */
 img{
-  max-width: 100%; /* Ensure media elements are not wider than their containers */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; 
+  height: auto; 
 }
 
 /* Media Queries for responsive adjustments */
 @media (max-width: 768px) {
+  
   .element-that-might-overflow {
-    width: auto; /* Or any other responsive adjustments */
-    /* Add any additional styling */
+    width: auto; 
   }
 
-  .weather-container-night{
-      width: 100%;
-      height: 100%;
-      position: relative;
-      background-image: url('../clear\ night\ copy.png'); /* background image URL */
-      background-size: cover;
-      background-position: center;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 1.25rem;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    
-    .location-heading {
-      padding-top: 0.25rem;
-      text-align: center;
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      margin-bottom: 0.5rem;
-    }
-
-    .hourly-forecast-container {
-      display: flex;
-      overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
-      padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
-      margin-bottom: 1.5rem;
-    }
-    
-    .hourly-forecast-item {
-      flex: 0 0 auto;
-      margin-right: 20px;
-      padding: 10px 20px; /* Padding inside each forecast item */
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
-      border-radius: 10px; /* Rounded corners for each item */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-      display: flex;
-      flex-direction: column; /* Stack time and temperature vertically */
-      align-items: center; /* Center items horizontally */
-      justify-content: center; /* Center items vertically */
-
-    }
-    
-    .hourly-time {
-      /* Styles for the time label */
-      font-size: 0.8em; /* Smaller font size for the time */
-    }
-    
-    .hourly-temp {
-      /* Styles for the temperature label */
-      font-size: 1.2em; /* Larger font size for the temperature */
-      font-weight: bold;
-    }
-
-
-
-    .weather-icon {
-      width: 50px;  /* Or whatever size fits your design */
-      height: auto; /* To maintain the aspect ratio */
-      margin-right: 10px; /* Add some space between the icon and the text */
-    }
-  
-
-    .navigation-bar {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      bottom: 0;
-      width: 100%;
-      background-color: #ffffff31; /* or any color you want */
-      border-radius: 15px ;
-      padding-bottom: 0%;
-
-    }
-    
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .nav-icon {
-      width: 25px; /* or any size you want */
-      height: 25px; /* or any size you want */
-      margin-bottom: 5px;
-      margin-top: 5px;
-    }
-
-    .current-weather-container {
-      /* Styles for the current weather container */
-      text-align: center; /* Center the content */
-    }
-    
-    .temperature {
-      /* Styles for the current temperature */
-      font-size: 3em; /* Large font size for visibility */
-      font-weight: bold;
-      margin-left: 0.5rem;
-    }
-
-    .high-low {
-      /* Styles for the high and low temperatures */
-      font-size: 1em;
-    }
-
-    .wind {
-      /* Styles for the wind details */
-      font-size: 1em;
-      display: flex;
-      justify-content: center; /* Center the wind details */
-      align-items: center;
-      gap: 10px; /* Add space between the icon and the text */
-  
-    }
-
-    .wind-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Adjust the space between wind speed and directions */
-    padding-top: 2rem;
-    }
-  
-    .wind-speed, .wind-directions {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-    border-radius: 20px; /* Rounded corners */
-    padding: 5px 10px; /* Padding around the text and icon */
-    margin-bottom: 1rem;
-  
-    }
-
-    .wind-speed span, .wind-directions span {
-    white-space: nowrap;
-    }
-
-
-    .searchBar {
-    display: flex;
-    justify-content: center;
-    }
-
-    .searchBar form {
-    display: flex;
-    width: 100%;
-    max-width: 500px; /* Adjust the max-width as needed */
-    }
-
-    .searchBar input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 20px 0 0 20px; /* Rounded left corners */
-    font-size: 16px;
-    color: #333; /* Font color - adjust if necessary */
-    }
-
-    .searchBar button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #1E90FF; /* Button color */
-    color: white; /* Button text color */
-    border-radius: 0 20px 20px 0; /* Rounded right corners */
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    }
-
-    .map-container{
-      margin-bottom: 1rem;
-    }
-    
-
-    
-    
-    
-
+   /* styles for day weather container */  
   .weather-container-day{
     width: 100%;
     height: 100%;
@@ -234,38 +42,187 @@ img{
     justify-content: space-between;
     }
 
-
-
+    /* styles for night weather container */
+  .weather-container-night{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background-image: url('../clear\ night\ copy.png'); /* background image URL */
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 1.25rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    /* styles for location */
     .location-heading {
       padding-top: 0.25rem;
       text-align: center;
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       margin-bottom: 0.5rem;
     }
-
+    
+    /* styles for forecast container */
     .hourly-forecast-container {
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
+      background: rgba(255, 255, 255, 0.1); 
       border-radius: 15px; /* Rounded corners */
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
     }
-
-
+    
+    /* styles for hourly forecast boxes */
     .hourly-forecast-item {
       flex: 0 0 auto;
       margin-right: 20px;
       padding: 10px 20px; /* Padding inside each forecast item */
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
-      border-radius: 10px; /* Rounded corners for each item */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
       flex-direction: column; /* Stack time and temperature vertically */
       align-items: center; /* Center items horizontally */
       justify-content: center; /* Center items vertically */
 
+    }
+    
+    /* Styles for the time label */
+    .hourly-time {
+      font-size: 0.8em; /* Smaller font size for the time */
+    }
+    
+    /* Styles for the temperature label */
+    .hourly-temp {
+      font-size: 1.2em; 
+      font-weight: bold;
+    }
+
+
+    /* styles for icons */
+    .weather-icon {
+      width: 50px;  
+      height: auto; 
+      margin-right: 10px; 
+    }
+  
+    /* styles for night nav-bar */
+    .navigation-bar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      bottom: 0;
+      width: 100%;
+      background-color: #ffffff31; 
+      border-radius: 15px ;
+      padding-bottom: 0%;
+
+    }
+    
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* styles for nav-bar-icons */
+    .nav-icon {
+      width: 25px; 
+      height: 25px; 
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+
+    .current-weather-container {
+      /* Styles for the current weather container */
+      text-align: center; /* Center the content */
+    }
+    
+    .temperature {
+      /* Styles for the current temperature */
+      font-size: 3em; 
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+
+    .high-low {
+      /* Styles for the high and low temperatures */
+      font-size: 1em;
+    }
+
+    .wind {
+      /* Styles for the wind details */
+      font-size: 1em;
+      display: flex;
+      justify-content: center; 
+      align-items: center;
+      gap: 10px; /* space between the icon and the text */
+  
+    }
+
+    .wind-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* space between wind speed and directions */
+    padding-top: 2rem;
+    }
+  
+    .wind-speed, .wind-directions {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border-radius: 20px; /* Rounded corners */
+    padding: 5px 10px; /* Padding around the text and icon */
+    margin-bottom: 1rem;
+  
+    }
+
+    .wind-speed span, .wind-directions span {
+    white-space: nowrap;
+    }
+
+   /* styles for search-bar */
+    .searchBar {
+    display: flex;
+    justify-content: center;
+    }
+
+    .searchBar form {
+    display: flex;
+    width: 100%;
+    max-width: 500px; 
+    }
+
+    .searchBar input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px 0 0 20px; /* Rounded left corners */
+    font-size: 16px;
+    color: #333; 
+    }
+   
+    /* styles for search button */
+    .searchBar button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #1E90FF; /* Button color */
+    color: white; /* Button text color */
+    border-radius: 0 20px 20px 0; /* Rounded right corners */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+
+    .map-container{
+      margin-bottom: 1rem;
     }
 
     .hourly-time {
@@ -279,45 +236,19 @@ img{
       font-weight: bold;
     }
 
-    .navigation-bar {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      bottom: 0;
-      width: 100%;
-      background-color: #ffffff31; /* or any color you want */
-      border-radius: 15px ;
-      padding-bottom: 0%;
-
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .nav-icon {
-      width: 25px; /* or any size you want */
-      height: 25px; /* or any size you want */
-      margin-bottom: 5px;
-      margin-top: 5px;
-    }
-
     .current-weather-container {
       /* Styles for the current weather container */
-      text-align: center; /* Center the content */
+      text-align: center; 
     }
 
     .temperature {
       /* Styles for the current temperature */
-      font-size: 3em; /* Large font size for visibility */
+      font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
 
     .weather-icon {
-      /* Adjust the size of the icons if needed */
       width: 30px;
       height: 30px;
       margin-right: 5px; /* Space between icon and text */
@@ -327,6 +258,7 @@ img{
 
 @media(min-width: 769px){
 
+  /* styles for day weather container */ 
   .weather-container-day{
     width: 100%;
     height: 100%;
@@ -342,34 +274,54 @@ img{
     flex-direction: column;
     justify-content: space-between;
     }
+
+    /* styles for night weather container */ 
+    .weather-container-night{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background-image: url('../clear\ night\ copy.png'); /* background image URL */
+      background-size: fill;
+      background-position: center;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 1.25rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      }
   
+      /* Styles for location header */
     .location-heading{
       padding-top: 0.25rem;
       text-align: center;
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       margin-bottom: 0.5rem;
     }
-
+    
+    /* Styles for forecast container */
     .hourly-forecast-container {
       display: flex;
       overflow-x: auto;
-      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the background */
-      border-radius: 15px; /* Rounded corners */
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* Add margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
       margin-left: 15rem;
       margin-right: 15rem;
       justify-content: space-evenly;
     }
   
+    /* Styles for forecast boxes */
     .hourly-forecast-item {
       flex: 0 0 auto;
       margin-right: 20px;
       padding: 10px 20px; /* Padding inside each forecast item */
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); /* Gradient background for each item */
-      border-radius: 10px; /* Rounded corners for each item */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
       flex-direction: column; /* Stack time and temperature vertically */
       align-items: center; /* Center items horizontally */
@@ -377,24 +329,25 @@ img{
 
     }
   
+    /* Styles for the time label */
     .hourly-time {
-      /* Styles for the time label */
-      font-size: 1rem; /* Smaller font size for the time */
+      font-size: 1rem; 
     }
     
+     /* Styles for the temperature label */
     .hourly-temp {
-      /* Styles for the temperature label */
-      font-size: 1rem; /* Larger font size for the temperature */
+      font-size: 1rem; 
       font-weight: bold;
     }
-
+    
+    /* Styles for nav-bar */
     .navigation-bar {
       display: flex;
       justify-content: center;
       align-items: center;
       bottom: 0;
       width: 100%;
-      background-color: #ffffff31; /* or any color you want */
+      background-color: #ffffff31; 
       border-radius: 15px ;
       padding-bottom: 0%;
 
@@ -405,44 +358,46 @@ img{
       margin-right: 5rem;
     }
     
+    /* Styles for nav-bar icons */
     .nav-icon {
-      width: 25px; /* or any size you want */
-      height: 25px; /* or any size you want */
+      width: 25px; 
+      height: 25px; 
       margin-bottom: 5px;
       margin-top: 5px;
     }
 
+    /* Styles for the current weather container */
     .current-weather-container {
-      /* Styles for the current weather container */
-      text-align: center; /* Center the content */
+      text-align: center; /* Centers content */
     }
     
+    /* Styles for the current temperature */
     .temperature {
-      /* Styles for the current temperature */
-      font-size: 3em; /* Large font size for visibility */
+      font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
     
+    /* Styles for icons */
     .weather-icon {
-      /* Adjust the size of the icons if needed */
       width: 30px;
       height: 30px;
       margin-right: 5px; /* Space between icon and text */
     }
 
+
+    /* Styles for the high and low temperatures */
     .high-low {
-      /* Styles for the high and low temperatures */
       font-size: 1em;
     }
 
+    /* Styles for the wind details */
     .wind {
-      /* Styles for the wind details */
       font-size: 1em;
       display: flex;
-      justify-content: center; /* Center the wind details */
+      justify-content: center;
       align-items: center;
-      gap: 10px; /* Add space between the icon and the text */
+      gap: 10px; /* space between the icon and the text */
   
     }
 
@@ -450,15 +405,15 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Adjust the space between wind speed and directions */
+    gap: 20px; /* space between wind speed and directions */
     padding-top: 2rem;
     }
   
     .wind-speed, .wind-directions {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-    border-radius: 20px; /* Rounded corners */
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 20px; 
     padding: 5px 10px; /* Padding around the text and icon */
     margin-bottom: 1rem;
   
@@ -477,52 +432,33 @@ img{
     .searchBar form {
     display: flex;
     width: 100%;
-    max-width: 500px; /* Adjust the max-width as needed */
+    max-width: 500px; 
     }
 
     .searchBar input {
     flex: 1;
     padding: 10px;
     border: none;
-    border-radius: 20px 0 0 20px; /* Rounded left corners */
+    border-radius: 20px 0 0 20px; 
     font-size: 16px;
-    color: #333; /* Font color - adjust if necessary */
+    color: #333; 
     }
 
+    /* styles for search button */
     .searchBar button {
     padding: 10px 20px;
     border: none;
-    background-color: #1E90FF; /* Button color */
-    color: white; /* Button text color */
-    border-radius: 0 20px 20px 0; /* Rounded right corners */
+    background-color: #1E90FF; 
+    color: white; 
+    border-radius: 0 20px 20px 0; 
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     }
 
     .map-container{
       margin-left: 15rem;
       margin-right: 15rem;
     }
-  
-
-  .weather-container-night{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background-image: url('../clear\ night\ copy.png'); /* background image URL */
-    background-size: fill;
-    background-position: center;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 1.25rem;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    }
-  
-    
   
 
 }
