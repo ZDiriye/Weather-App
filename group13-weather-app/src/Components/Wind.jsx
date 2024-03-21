@@ -1,3 +1,4 @@
+//Anything imported here is required for the page to work - leaflet is for the map
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
@@ -42,7 +43,7 @@ const Wind = () => {
   useEffect(() => {
   fetchData();
 
-
+    //Gets the current date and hour
   let currentDate = new Date();
   let currentHour = currentDate.getHours();
 
@@ -112,7 +113,7 @@ const Wind = () => {
   const locationName = city;
 
 
-
+  //Wind data collected from the API and if the data is not available yet, a holding value of 'Loading' is used
 
   const currentHour = new Date().getHours();
   const hourlyForecast = [
@@ -125,6 +126,7 @@ const Wind = () => {
   ];
 
 
+  //HTML returned with all elements required to be rendered on the page
   return (
   <div className={cssClass}>
       <header className="windlocation-heading">

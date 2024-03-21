@@ -1,5 +1,6 @@
 /* WeatherApp.css */
 
+/* Include padding and borders in the element's total width and height */
 * {
   box-sizing: border-box; 
 }
@@ -18,6 +19,7 @@ img{
   height: auto; 
 }
 
+
 /* Media Queries for responsive adjustments */
 @media (max-width: 768px) {
   
@@ -30,7 +32,7 @@ img{
     width: 100%;
     height: 100%;
     position: relative;
-    background-image: url('../day\ gradient.png'); /* background image URL */
+    background-image: url('../day\ gradient.png'); 
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -47,7 +49,7 @@ img{
       width: 100%;
       height: 100%;
       position: relative;
-      background-image: url('../clear\ night\ copy.png'); /* background image URL */
+      background-image: url('../clear\ night\ copy.png'); 
       background-size: cover;
       background-position: center;
       border-radius: 10px;
@@ -72,7 +74,7 @@ img{
       display: flex;
       overflow-x: auto;
       background: rgba(255, 255, 255, 0.1); 
-      border-radius: 15px; /* Rounded corners */
+      border-radius: 15px; 
       padding: 10px;
       margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
@@ -82,20 +84,20 @@ img{
     .hourly-forecast-item {
       flex: 0 0 auto;
       margin-right: 20px;
-      padding: 10px 20px; /* Padding inside each forecast item */
+      padding: 10px 20px; 
       background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
       border-radius: 10px; 
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
-      flex-direction: column; /* Stack time and temperature vertically */
-      align-items: center; /* Center items horizontally */
-      justify-content: center; /* Center items vertically */
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
 
     }
     
     /* Styles for the time label */
     .hourly-time {
-      font-size: 0.8em; /* Smaller font size for the time */
+      font-size: 0.8em; 
     }
     
     /* Styles for the temperature label */
@@ -125,6 +127,7 @@ img{
 
     }
     
+    /* Styles the navigation items by changing to flex */
     .nav-item {
       display: flex;
       flex-direction: column;
@@ -139,51 +142,58 @@ img{
       margin-top: 5px;
     }
 
+    /* Styles for the current weather container */
     .current-weather-container {
-      /* Styles for the current weather container */
-      text-align: center; /* Center the content */
+
+      text-align: center; 
     }
     
+    /* Styles for the current temperature */
     .temperature {
-      /* Styles for the current temperature */
+      
       font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
 
+    /* Styles for the high and low temperatures */
     .high-low {
-      /* Styles for the high and low temperatures */
+      
       font-size: 1em;
     }
 
+    /* Styles for the wind details */
     .wind {
-      /* Styles for the wind details */
+
       font-size: 1em;
       display: flex;
       justify-content: center; 
       align-items: center;
-      gap: 10px; /* space between the icon and the text */
+      gap: 10px; 
   
     }
 
+    /* Styles the wind container */
     .wind-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* space between wind speed and directions */
+    gap: 20px; 
     padding-top: 2rem;
     }
   
+    /* Styles both the wind speed and wind direction sections */
     .wind-speed, .wind-directions {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-    border-radius: 20px; /* Rounded corners */
-    padding: 5px 10px; /* Padding around the text and icon */
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 20px; 
+    padding: 5px 10px; 
     margin-bottom: 1rem;
   
     }
 
+    /* Styles the wind speed and wind direction sections */
     .wind-speed span, .wind-directions span {
     white-space: nowrap;
     }
@@ -194,12 +204,14 @@ img{
     justify-content: center;
     }
 
+    /* Styles the search bar form */
     .searchBar form {
     display: flex;
     width: 100%;
     max-width: 500px; 
     }
 
+    /* Styles the input field for the search bar */
     .searchBar input {
     flex: 1;
     padding: 10px;
@@ -221,40 +233,48 @@ img{
     transition: background-color 0.3s ease;
     }
 
+    /* Styles the map container */
     .map-container{
       margin-bottom: 1rem;
     }
 
+    /* Styles for the time label */
     .hourly-time {
-      /* Styles for the time label */
-      font-size: 0.8em; /* Smaller font size for the time */
+
+      font-size: 0.8em; 
     }
 
+    /* Styles for the temperature label */
     .hourly-temp {
-      /* Styles for the temperature label */
-      font-size: 1.2em; /* Larger font size for the temperature */
+
+      font-size: 1.2em; 
       font-weight: bold;
     }
 
+    /* Styles for the current weather container */
     .current-weather-container {
-      /* Styles for the current weather container */
+
       text-align: center; 
     }
 
+    /* Styles for the current temperature */
     .temperature {
-      /* Styles for the current temperature */
+      
       font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
 
+    /* Styles the weather icons */
     .weather-icon {
       width: 30px;
       height: 30px;
-      margin-right: 5px; /* Space between icon and text */
+      margin-right: 5px; 
     }
   }
 
+
+  /* The styles below are the same as above but with a few changes like margins and backgrounds */
 
 @media(min-width: 769px){
 
@@ -263,7 +283,7 @@ img{
     width: 100%;
     height: 100%;
     position: relative;
-    background-image: url('../day_gradient_desktop.png'); /* background image URL */
+    background-image: url('../day_gradient_desktop.png');
     background-size: fill;
     background-position: center;
     border-radius: 10px;
@@ -280,7 +300,7 @@ img{
       width: 100%;
       height: 100%;
       position: relative;
-      background-image: url('../clear\ night\ copy.png'); /* background image URL */
+      background-image: url('../clear\ night\ copy.png'); 
       background-size: fill;
       background-position: center;
       border-radius: 10px;
@@ -318,14 +338,14 @@ img{
     .hourly-forecast-item {
       flex: 0 0 auto;
       margin-right: 20px;
-      padding: 10px 20px; /* Padding inside each forecast item */
+      padding: 10px 20px; 
       background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
       border-radius: 10px; 
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
-      flex-direction: column; /* Stack time and temperature vertically */
-      align-items: center; /* Center items horizontally */
-      justify-content: center; /* Center items vertically */
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
 
     }
   
@@ -368,7 +388,7 @@ img{
 
     /* Styles for the current weather container */
     .current-weather-container {
-      text-align: center; /* Centers content */
+      text-align: center; 
     }
     
     /* Styles for the current temperature */
@@ -382,7 +402,7 @@ img{
     .weather-icon {
       width: 30px;
       height: 30px;
-      margin-right: 5px; /* Space between icon and text */
+      margin-right: 5px; 
     }
 
 
@@ -397,7 +417,7 @@ img{
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px; /* space between the icon and the text */
+      gap: 10px; 
   
     }
 
@@ -405,7 +425,7 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* space between wind speed and directions */
+    gap: 20px; 
     padding-top: 2rem;
     }
   
@@ -414,7 +434,7 @@ img{
     align-items: center;
     background: rgba(255, 255, 255, 0.2); 
     border-radius: 20px; 
-    padding: 5px 10px; /* Padding around the text and icon */
+    padding: 5px 10px; 
     margin-bottom: 1rem;
   
     }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "../Components/WeatherApp.css";
+import "./WeatherApp.css";
 import wind from "./Assets/Wind.png";
 import compass from "./Assets/Compass.png";
 import location from "./Assets/location.png";
@@ -40,14 +40,14 @@ const WeatherApp = () => {
       }
     };
 
-
+    //gets current date and hour 
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
 
 
     console.log(currentHour);
 
-    // Determine CSS class based on time of day
+    // Determine CSS class based on time of day - day for 7am to 7pm
     if(currentHour >= 7 && currentHour <= 19){
       setCSSclass('weather-container-day');
     }

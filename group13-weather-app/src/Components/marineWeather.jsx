@@ -43,6 +43,7 @@ const MarineWeather = () => {
       const response2 = await axios.get(`https://marine-api.open-meteo.com/v1/marine?latitude=${response.data.results[0].latitude}&longitude=${response.data.results[0].longitude}&current=wave_height,wave_direction,swell_wave_height&hourly=wave_height,swell_wave_height&forecast_hours=6`);
       setMarineWeatherData(response2.data);
     }
+    //Any errors are caught and then printed to the browser console
     catch(error){
       console.error(error);
     }

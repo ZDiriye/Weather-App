@@ -25,12 +25,12 @@ img{
   }
 
   /* Styling for the main div container when the 'theme' is night */
-  /* Styles the background and flex of the main container */
+  /* Styles the background and flex of the main container, also the border, shadow and padding */
   .marineweather-containerNight{
       width: 100%;
       height: 100%;
       position: relative;
-      background-image: url('../clear\ night\ copy.png'); /* background image URL*/
+      background-image: url('../clear\ night\ copy.png'); 
       background-size: cover;
       background-position: center;
       border-radius: 10px;
@@ -42,6 +42,7 @@ img{
       justify-content: space-between;
     }
 
+    /* Styles the swell container - changing the display to flex, background, border radius  */
     .swell-container{
       display: flex;
       flex-direction: column;
@@ -86,25 +87,25 @@ img{
     .marinehourly-forecast-item {
       flex: 0 0 auto;
       margin-right: 20px;
-      padding: 10px 20px; /* Padding inside each forecast item */
+      padding: 10px 20px; 
       background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
       border-radius: 10px; 
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
-      flex-direction: column; /* Stack time and temperature vertically */
-      align-items: center; /* Center items horizontally */
-      justify-content: center; /* Center items vertically */
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
 
     }
     
     /* Styles the time in the hourly forecasts */
     .marinehourly-time {
-      font-size: 0.8em; /* Smaller font size for the time */
+      font-size: 0.8em; 
     }
     
     /* Styles for the hourly wave height - font size and makes font bold */
     .marinehourly-height {
-      font-size: 1.2em; /* Larger font size for the temperature */
+      font-size: 1.2em; 
       font-weight: bold;
     }
 
@@ -180,7 +181,7 @@ img{
     
     /* Styling for the current wave height at the location */
     .height {
-      font-size: 3em; /* Large font size for visibility */
+      font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
@@ -201,13 +202,14 @@ img{
     
     
 
-    /* The following is the same but it uses a different background image - a blue gradient */
+    /* The following is the same as above but it uses a different background image - a blue gradient for day theme*/
+  /* Styles the background and flex of the main container, also the border, shadow and padding */
   .marineweather-containerDay{
 
     width: 100%;
     height: 100%;
     position: relative;
-    background-image: url('../day\ gradient.png'); /* background image URL */
+    background-image: url('../day\ gradient.png'); 
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -219,6 +221,7 @@ img{
     justify-content: space-between;
     }
 
+    /* Styles the swell container - changing the display to flex, background, border radius  */
     .swell-container{
       display: flex;
       flex-direction: column;
@@ -229,6 +232,7 @@ img{
         margin-bottom: 1rem;
     }
 
+    /* Styles the padding, text alignment, font family and bottom margin for the location*/
     .marinelocation-heading {
       padding-top: 0.25rem;
       text-align: center;
@@ -236,6 +240,7 @@ img{
       margin-bottom: 0.5rem;
     }
 
+    /* Display the hourly forecast container in flex and allows it to overflow and become scrollable */
     .marinehourly-forecast-container {
       display: flex;
       overflow-x: auto;
@@ -246,6 +251,7 @@ img{
       margin-bottom: 1.5rem;
     }
 
+    /* Display the hourly forecast container for swell in flex and allows it to overflow and become scrollable */
     .marine-swell-hourly-forecast-container {
       display: flex;
       overflow-x: auto;
@@ -256,31 +262,33 @@ img{
       margin-bottom: 1.5rem;
     }
 
+    /* Styles the flex, background, padding and margins for the items contained in the hourly wave forecast */
     .marinehourly-forecast-item {
       flex: 0 0 auto;
       margin-right: 20px;
-      padding: 10px 20px; /* Padding inside each forecast item */
+      padding: 10px 20px; 
       background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
       border-radius: 10px; 
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
-      flex-direction: column; /* Stack time and temperature vertically */
-      align-items: center; /* Center items horizontally */
-      justify-content: center; /* Center items vertically */
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
 
     }
 
+    /* Styles the time in the hourly forecasts */
     .marinehourly-time {
-      /* Styles for the time label */
-      font-size: 0.8em; /* Smaller font size for the time */
+      font-size: 0.8em; 
     }
 
+    /* Styles for the hourly wave height - font size and makes font bold */
     .marinehourly-height {
-      /* Styles for the temperature label */
-      font-size: 1.2em; /* Larger font size for the temperature */
+      font-size: 1.2em; 
       font-weight: bold;
     }
 
+    /* Styling for the top wave image and the current height (top) - edits the flex display */
     .wave-and-height{
       display: flex;
       flex-direction: row;
@@ -288,7 +296,7 @@ img{
       justify-content: center;
     }
 
-
+    /* Styling for the main wave icon */
     .wave-icon {
       width: 30px;  
       height: 30px; 
@@ -297,11 +305,13 @@ img{
       margin-bottom: 0.3rem;
     }
 
+    /* Changes the height and width for the swell icon in the swell section */
     .swell-icon{
       width: 4rem;
       height: 5rem;
     }
 
+    /* Changes the styling to flex for the swell heading and img */
     .swell-heading{
       display: flex;
       flex-direction: row;
@@ -309,16 +319,19 @@ img{
       margin-bottom: 0.5rem;
     }
 
+    /* Changes the margin and font size for the title that says 'swell' */
     .swell-title{
       margin-top: 2rem;
       font-size: 1.75rem;
     }
 
+    /* Changes the text size and alignement of the current swell height */
     .swellHeight{
       font-size: 1.5rem;
       align-self: center;
     }
 
+      /* Styles the navigation bar at the bottom of the page - changing it to flex */
     .marinenavigation-bar {
       display: flex;
       justify-content: space-around;
@@ -331,12 +344,14 @@ img{
 
     }
 
+    /* Changes the display to flex for the navigation items */
     .marinenav-item {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
+     /* Changes the size and margins for the navigation icons at the bottom */
     .marinenav-icon {
       width: 25px; 
       height: 25px; 
@@ -344,27 +359,27 @@ img{
       margin-top: 5px;
     }
 
+        /* Changing the text position to the centre for the container containing current wave conditions and direction */
     .marinecurrent-weather-container {
-      /* Styles for the current weather container */
-      text-align: center; /* Center the content */
+      text-align: center; 
     }
 
+        /* Styling for the current wave height at the location */
     .height {
-      /* Styles for the current temperature */
-      font-size: 3em; /* Large font size for visibility */
+      font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
 
+        /* Styling for the wave direction */
     .direction-div {
-      /* Styles for the high and low temperatures */
       font-size: 1.5em;
       margin-top: 0.5rem;
       margin-bottom: 1.25rem;
     }
 
+        /* Changes the size of the icons for the hourly forecast */
     .marineweather-icon {
-      /* Adjust the size of the icons if needed */
       width: 30px;
       height: 30px;
       margin-right: 5px; 
@@ -373,6 +388,7 @@ img{
 
 
 /* The following is the same but with a few changes and is used when the page is responsive for desktop */
+/* The main changes are to do with margins - increasing the left and right margins to align the containers in the centre of the viewport */
 
 @media(min-width: 769px){
 
@@ -382,7 +398,7 @@ img{
     width: 100%;
     height: 100%;
     position: relative;
-    background-image: url('../day_gradient_desktop.png'); /* background image URL */
+    background-image: url('../day_gradient_desktop.png'); 
     background-size: fill;
     background-position: center;
     border-radius: 10px;
@@ -394,6 +410,7 @@ img{
     justify-content: space-between;
   
   
+
     .swell-container{
       display: flex;
       flex-direction: column;
@@ -413,7 +430,6 @@ img{
       margin-bottom: 0.5rem;
     }
 
-    /* Changes the left and right margin of the hourly forecast container */
 
     .marinehourly-forecast-container {
       display: flex;
@@ -431,14 +447,14 @@ img{
     .marinehourly-forecast-item {
       flex: 0 0 auto;
       margin-right: 20px;
-      padding: 10px 20px; /* Padding inside each forecast item */
+      padding: 10px 20px;
       background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)); 
       border-radius: 10px; 
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
-      flex-direction: column; /* Stack time and temperature vertically */
-      align-items: center; /* Center items horizontally */
-      justify-content: center; /* Center items vertically */
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
 
     }
 
@@ -454,12 +470,10 @@ img{
     }
   
     .marinehourly-time {
-      /* Styles for the time label */
       font-size: 1rem; 
     }
     
     .marinehourly-height {
-      /* Styles for the temperature label */
       font-size: 1rem; 
       font-weight: bold;
     }
@@ -527,19 +541,16 @@ img{
     }
 
     .marinecurrent-weather-container {
-      /* Styles for the current weather container */
       text-align: center; 
     }
     
     .height {
-      /* Styles for the current temperature */
       font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
     
     .direction-div {
-      /* Styles for the high and low temperatures */
       font-size: 1.5em;
       margin-top: 0.5rem;
       margin-bottom: 1.25rem;
@@ -548,7 +559,7 @@ img{
     .marineweather-icon {
       width: 30px;
       height: 30px;
-      margin-right: 5px; /* Space between icon and text */
+      margin-right: 5px; 
     }
   }
 
@@ -556,7 +567,7 @@ img{
     width: 100%;
     height: 100%;
     position: relative;
-    background-image: url('../clear\ night\ copy.png'); /* background image URL */
+    background-image: url('../clear\ night\ copy.png'); 
     background-size: fill;
     background-position: center;
     border-radius: 10px;
@@ -567,6 +578,7 @@ img{
     flex-direction: column;
     justify-content: space-between;
   
+
 
     .swell-container{
       display: flex;
@@ -608,9 +620,9 @@ img{
       border-radius: 10px; 
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
       display: flex;
-      flex-direction: column; /* Stack time and temperature vertically */
-      align-items: center; /* Center items horizontally */
-      justify-content: center; /* Center items vertically */
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
 
     }
 
@@ -620,18 +632,16 @@ img{
       background: rgba(255, 255, 255, 0.1); 
       border-radius: 15px; 
       padding: 10px;
-      margin-top: 0.8rem; /* margin above and below the forecast */
+      margin-top: 0.8rem; 
       margin-bottom: 1.5rem;
       justify-content: space-evenly;
     }
   
     .marinehourly-time {
-      /* Styles for the time label */
       font-size: 1rem; 
     }
     
     .marinehourly-height {
-      /* Styles for the temperature label */
       font-size: 1rem;
       font-weight: bold;
     }
@@ -647,7 +657,7 @@ img{
     .wave-icon {
       width: 30px;  
       height: 30px; 
-      margin-right: 0.1rem; /* Add some space between the icon and the text */
+      margin-right: 0.1rem; 
       margin-top: 0.3rem;
       margin-bottom: 0.3rem;
     }
@@ -699,29 +709,26 @@ img{
     }
 
     .marinecurrent-weather-container {
-      /* Styles for the current weather container */
-      text-align: center; /* Center the content */
+      text-align: center; 
     }
     
     .height {
-      /* Styles for the current temperature */
-      font-size: 3em; /* Large font size for visibility */
+
+      font-size: 3em; 
       font-weight: bold;
       margin-left: 0.5rem;
     }
     
     .direction-div {
-      /* Styles for the high and low temperatures */
       font-size: 1.5em;
       margin-top: 0.5rem;
       margin-bottom: 1.25rem;
     }
     
     .marineweather-icon {
-      /* Adjust the size of the icons if needed */
       width: 30px;
       height: 30px;
-      margin-right: 5px; /* Space between icon and text */
+      margin-right: 5px; 
     }
   }
 
