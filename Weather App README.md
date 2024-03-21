@@ -3,6 +3,7 @@ README file for the weather app
 Instructions for use...
 
 Dependency installations:
+- npm install react
 - npm install axios
 - npm install react-router-dom
 - npm install @vis.gl/react-google-maps
