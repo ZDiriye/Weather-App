@@ -2,6 +2,8 @@ README file for the weather app
 
 Instructions for use...
 
+cd into group13-weather-app
+
 Dependency installations:
 - npm install react
 - npm install axios
