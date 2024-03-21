@@ -131,6 +131,12 @@ const Wind = () => {
         <h1>{locationName}</h1>
       </header>
 
+      <section className="windcurrent-weather-container">
+        <div className='windspeed'>
+            <div className="speed">{windData ? windData.current_weather.windspeed : "Loading"} m/s</div>
+        </div>
+      </section>
+
 
       <div className="map-container">
           <div id="map" style={{ height: "10rem", width: "100%"}}>
@@ -138,12 +144,7 @@ const Wind = () => {
       </div>
 
 
-      <section className="windcurrent-weather-container">
-        <div className='windspeed'>
-            <img src={wind} alt="Wind icon" className="wind-speed-icon" />
-            <div className="speed">{windData ? windData.current_weather.windspeed : "Loading"} m/s</div>
-        </div>
-      </section>
+     
 
 
       <section className="windhourly-forecast-container">
