@@ -14,7 +14,7 @@ import waves from "./Assets/Waves.png";
 const Wind = () => {
   // State variables to store wind data and CSS class for styling
   const [windData, setWindData] = useState(null);
-  const [cssClass, setCSSClass] = useState('windweather-containerNight')
+  const [cssClass, setCSSClass] = useState('windweather-containerNight');
   
   // Extract city, latitude, and longitude from location state
   const {state} = useLocation();
@@ -51,15 +51,15 @@ const Wind = () => {
 
   // Determine day or night to set CSS class for styling
   if(currentHour >= 7 && currentHour <= 19){
-    setCSSClass('windweather-containerDay')
+    setCSSClass('windweather-containerDay');
   }
   else{
-    setCSSClass('windweather-containerNight')
+    setCSSClass('windweather-containerNight');
   }
 
 
   // Create Leaflet map instance and fetch wind map tiles
-  const coordinates = [lat,lon]
+  const coordinates = [lat,lon];
   const extendAmount = 1.5;
   const mapInstance = L.map('map', {
     zoomControl: false, // Disable zoom control
@@ -97,7 +97,7 @@ const Wind = () => {
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
     shadowSize: [41, 41],
   });
-  L.marker(coordinates, { icon: map_icon }).addTo(mapInstance)
+  L.marker(coordinates, { icon: map_icon }).addTo(mapInstance);
   fetchWindMapTiles();
   return () => {
     mapInstance.remove();
@@ -161,17 +161,9 @@ const Wind = () => {
       <nav className="windnavigation-bar">
 
 
-          <Link to="/wind" state={city}><img src={wind} alt="Wind" className="nav-icon" /></Link>
-
-
-
-
+          <Link to="/wind" state={[city, lat, lon]}><img src={wind} alt="Wind" className="nav-icon" /></Link>
           <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
-
-
-
-
-          <Link to="/waves" state={city}><img src={waves} alt="Waves" className="nav-icon" /></Link>
+          <Link to="/waves" state={[city, lat, lon]}><img src={waves} alt="Waves" className="nav-icon" /></Link>
 
 
       </nav>

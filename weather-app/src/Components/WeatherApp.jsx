@@ -133,7 +133,7 @@ const WeatherApp = () => {
             <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
 
 
-            <Link to="/waves" state={weatherData ? weatherData.name:"Cape Town"}><img src={waves} alt="Waves" className="nav-icon" /></Link>
+            <Link to="/waves" state={[weatherData ? weatherData.name:"Cape Town", weatherData ? weatherData.coord.lat:-33.92584, weatherData ? weatherData.coord.lon:18.42322]}><img src={waves} alt="Waves" className="nav-icon" /></Link>
 
 
           </div>

@@ -25,7 +25,10 @@ const MarineWeather = () => {
 
   //Get the state of another page through the links and set it to variable city
   const {state} = useLocation();
-  const city = state; 
+  const city = state[0]; 
+  const lat = state[1];
+  const lon = state[2];
+  
 
   console.log(city)
 
@@ -193,13 +196,13 @@ const MarineWeather = () => {
 
         <nav className="marinenavigation-bar">
 
-            <Link to="/wind" state={city}><img src={wind} alt="Wind" className="nav-icon" /></Link>
+            <Link to="/wind" state={[city, lat, lon]}><img src={wind} alt="Wind" className="nav-icon" /></Link>
 
 
             <Link to="/"><img src={location} alt="Locations" className="nav-icon" /></Link>
 
 
-            <Link to="/waves" state={city}><img src={waves} alt="Waves" className="nav-icon" /></Link>
+            <Link to="/waves" state={[city, lat, lon]}><img src={waves} alt="Waves" className="nav-icon" /></Link>
 
         </nav>
     </div>

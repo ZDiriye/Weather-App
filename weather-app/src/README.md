@@ -6,6 +6,7 @@ Dependency installations:
 - npm install axios
 - npm install react-router-dom
 - npm install @vis.gl/react-google-maps
+- npm install leaflet
 
 
 Lines of html to add to index.html in the public folder
