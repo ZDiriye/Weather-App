@@ -8,7 +8,7 @@ Dependency installations:
 - npm install @vis.gl/react-google-maps
 - npm install leaflet
 
-To start the weather app just npm start / npm run start in the group13-weather-app folder
+To start the weather app just npm start / npm run start in the group13-weather-app folder.
 
 The weather app is best used in mobile format so in the browser have a width of 768px however, it is responsive to standard desktop size.
 
