@@ -1,3 +1,5 @@
+**Status: Deprecated — this project is no longer maintained and may not run.**
+
 # Weather App for Sailors 🌊🌦
 
 This application is designed specifically for sailors to provide real-time weather updates, focusing on conditions important for safe navigation, such as wind speed, wave heights, and visibility.
